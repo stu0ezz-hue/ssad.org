@@ -1,0 +1,8 @@
+{
+  // Tailwind CSS v4 defines custom at-rules like @theme that VS Code's
+  // built-in CSS linter does not recognize. Keep the CSS linter active for
+  // real problems but stop it from flagging legitimate Tailwind at-rules.
+  "css.lint.unknownAtRules": "ignore",
+  // Recommended for @theme-aware completions/validation in Tailwind v4.
+  "css.lint.compatibleVendorPrefixes": "ignore"
+}

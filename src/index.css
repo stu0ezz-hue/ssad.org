@@ -1,0 +1,255 @@
+/* ===== Google Fonts: IBM Plex Sans Arabic + Inter ===== */
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap");
+@import "tailwindcss";
+
+/* ===== Design tokens ===== */
+:root {
+  /* Primary — Deep Navy */
+  --color-navy-50: #eef2f7;
+  --color-navy-100: #d6e0ee;
+  --color-navy-200: #a8b8d2;
+  --color-navy-300: #7b90b6;
+  --color-navy-400: #4e689a;
+  --color-navy-500: #21407e;
+  --color-navy-600: #18336a;
+  --color-navy-700: #112752;
+  --color-navy-800: #0b1f43;
+  --color-navy-900: #061529;
+
+  /* Secondary — Warm Teal/Green */
+  --color-teal-50: #e9f5f2;
+  --color-teal-100: #c7e7df;
+  --color-teal-200: #8fcfbd;
+  --color-teal-300: #57b79b;
+  --color-teal-400: #2a997a;
+  --color-teal-500: #147d60;
+  --color-teal-600: #0f6a50;
+  --color-teal-700: #0a5440;
+  --color-teal-800: #063f30;
+  --color-teal-900: #032b21;
+
+  /* Accent — Warm Gold */
+  --color-gold-50: #fbf5e8;
+  --color-gold-100: #f5e6c2;
+  --color-gold-200: #ebce8a;
+  --color-gold-300: #e0b452;
+  --color-gold-400: #d49e2e;
+  --color-gold-500: #c08418;
+  --color-gold-600: #9d6912;
+  --color-gold-700: #7a500d;
+  --color-gold-800: #573a09;
+  --color-gold-900: #362405;
+
+  /* Neutral */
+  --color-sand-50: #fafaf7;
+  --color-sand-100: #f3f2ec;
+  --color-sand-200: #e8e6dc;
+  --color-sand-300: #d6d2c2;
+  --color-sand-400: #b8b29b;
+  --color-sand-500: #8c8772;
+  --color-sand-600: #6b6656;
+  --color-sand-700: #4d4a3f;
+  --color-sand-800: #302f29;
+  --color-sand-900: #181712;
+}
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-arabic: "IBM Plex Sans Arabic", ui-sans-serif, system-ui, sans-serif;
+
+  --color-navy-50: var(--color-navy-50);
+  --color-navy-100: var(--color-navy-100);
+  --color-navy-200: var(--color-navy-200);
+  --color-navy-300: var(--color-navy-300);
+  --color-navy-400: var(--color-navy-400);
+  --color-navy-500: var(--color-navy-500);
+  --color-navy-600: var(--color-navy-600);
+  --color-navy-700: var(--color-navy-700);
+  --color-navy-800: var(--color-navy-800);
+  --color-navy-900: var(--color-navy-900);
+
+  --color-teal-50: var(--color-teal-50);
+  --color-teal-100: var(--color-teal-100);
+  --color-teal-200: var(--color-teal-200);
+  --color-teal-300: var(--color-teal-300);
+  --color-teal-400: var(--color-teal-400);
+  --color-teal-500: var(--color-teal-500);
+  --color-teal-600: var(--color-teal-600);
+  --color-teal-700: var(--color-teal-700);
+  --color-teal-800: var(--color-teal-800);
+  --color-teal-900: var(--color-teal-900);
+
+  --color-gold-50: var(--color-gold-50);
+  --color-gold-100: var(--color-gold-100);
+  --color-gold-200: var(--color-gold-200);
+  --color-gold-300: var(--color-gold-300);
+  --color-gold-400: var(--color-gold-400);
+  --color-gold-500: var(--color-gold-500);
+  --color-gold-600: var(--color-gold-600);
+  --color-gold-700: var(--color-gold-700);
+  --color-gold-800: var(--color-gold-800);
+  --color-gold-900: var(--color-gold-900);
+
+  --color-sand-50: var(--color-sand-50);
+  --color-sand-100: var(--color-sand-100);
+  --color-sand-200: var(--color-sand-200);
+  --color-sand-300: var(--color-sand-300);
+  --color-sand-400: var(--color-sand-400);
+  --color-sand-500: var(--color-sand-500);
+  --color-sand-600: var(--color-sand-600);
+  --color-sand-700: var(--color-sand-700);
+  --color-sand-800: var(--color-sand-800);
+  --color-sand-900: var(--color-sand-900);
+}
+
+/* ===== Base ===== */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+html[dir="rtl"] body {
+  font-family: var(--font-arabic);
+}
+
+html[dir="ltr"] body {
+  font-family: var(--font-sans);
+}
+
+body {
+  background-color: #ffffff;
+  color: var(--color-navy-800);
+  font-feature-settings: "kern", "liga", "calt";
+}
+
+html[dir="rtl"] body {
+  font-feature-settings: "kern", "liga", "calt", "ss01";
+}
+
+/* ===== Custom utilities ===== */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .bg-hero-gradient {
+    background: linear-gradient(135deg, rgba(6, 21, 41, 0.78) 0%, rgba(11, 31, 67, 0.65) 40%, rgba(20, 125, 96, 0.35) 100%);
+  }
+  .section-fade {
+    background: radial-gradient(ellipse at top, rgba(20, 125, 96, 0.06), transparent 60%);
+  }
+}
+
+/* ===== Animations ===== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -10px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-fade-up {
+  animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-out both;
+}
+
+.animate-slide-down {
+  animation: slideDown 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Reveal on scroll */
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ===== Focus styles (accessible) ===== */
+:focus-visible {
+  outline: 2px solid var(--color-gold-400);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-sand-50);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-navy-300);
+  border-radius: 6px;
+  border: 2px solid var(--color-sand-50);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-navy-500);
+}
+
+/* ===== Selection ===== */
+::selection {
+  background: var(--color-gold-200);
+  color: var(--color-navy-900);
+}
