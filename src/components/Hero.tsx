@@ -21,7 +21,7 @@ export function Hero() {
       {/* Background image */}
       <div className="absolute inset-0 -z-10">
         <img
-          src="/images/hero.jpg"
+          src={`${import.meta.env.BASE_URL}images/hero.jpg`}
           alt=""
           aria-hidden
           className="w-full h-full object-cover scale-105"

@@ -300,7 +300,7 @@ export function Wordmark({
     <div className={`flex items-center gap-2.5 sm:gap-3 ${className}`}>
       {/* Logo icon — static, no hover / transition effects */}
       <img
-        src="/images/shababnaSanadLogo.png"
+        src={`${import.meta.env.BASE_URL}images/shababnaSanadLogo.png`}
         alt=""
         className="h-10 w-10 sm:h-11 sm:w-11 object-contain select-none shrink-0"
         draggable={false}

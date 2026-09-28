@@ -261,7 +261,7 @@ export function Header() {
               className="hidden sm:inline-flex shrink-0 items-center gap-2 whitespace-nowrap bg-gold-400 hover:bg-gold-300 text-navy-900 font-semibold text-[14px] px-5 py-2.5 rounded-md transition-all shadow-sm hover:shadow-md"
             >
               <img
-                src="/images/donate.png"
+                src={`${import.meta.env.BASE_URL}images/donate.png`}
                 alt=""
                 aria-hidden="true"
                 className="w-6 h-6 object-contain shrink-0"
@@ -328,7 +328,7 @@ export function Header() {
                 className="inline-flex shrink-0 items-center gap-2 whitespace-nowrap bg-gold-400 hover:bg-gold-300 text-navy-900 font-semibold text-sm px-5 py-2.5 rounded-md"
               >
                 <img
-                  src="/images/donate.png"
+                  src={`${import.meta.env.BASE_URL}images/donate.png`}
                   alt=""
                   aria-hidden="true"
                   className="w-6 h-6 object-contain shrink-0"

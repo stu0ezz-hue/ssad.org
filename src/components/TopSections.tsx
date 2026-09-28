@@ -15,7 +15,7 @@ export function About() {
           <div className="relative">
             <div className="relative overflow-hidden rounded-lg shadow-2xl">
               <img
-                src="/images/about.jpg"
+                src={`${import.meta.env.BASE_URL}images/about.jpg`}
                 alt={t.about.imageAlt}
                 className="w-full h-[400px] md:h-[500px] object-cover"
                 loading="lazy"
