@@ -21,10 +21,10 @@ export const en = {
 
   hero: {
     headline: "Together We Create Impact... Together We Build a Better Future",
-    sub: "Shababna Sanad Association for Development and Support is dedicated to empowering youth, supporting communities, and creating real opportunities toward a fairer, more sustainable future.",
-    ctaPrimary: "Discover Our Mission",
+    sub: "We empower youth, support communities, and create real opportunities for a fairer, more sustainable future.",
+    ctaPrimary: "Discover Our Programs",
     ctaSecondary: "Contribute With Us",
-    badge: "Shababna Sanad Association for Development and Support",
+    badge: "Shababna Sanad for Development and Support",
     brandSpan: "Shababna Sanad",
     stats: {
       beneficiaries: "Beneficiaries",

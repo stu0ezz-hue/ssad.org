@@ -166,7 +166,7 @@ export function Header() {
       dir={dir}
     >
       <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
-        <div className="flex h-16 sm:h-20 items-center justify-between gap-3 sm:gap-4">
+        <div className="flex h-14 sm:h-20 items-center justify-between gap-3 sm:gap-4">
           {/* Logo */}
           <a
             href="#home"

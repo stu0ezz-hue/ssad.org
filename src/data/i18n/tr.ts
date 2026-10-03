@@ -21,8 +21,8 @@ export const tr = {
 
   hero: {
     headline: "Birlikte Etki Yaratıyoruz... Birlikte Daha İyi Bir Gelecek İnşa Ediyoruz",
-    sub: "Shababna Sanad Kalkınma ve Destek Derneği, gençleri güçlendirmeye, toplulukları desteklemeye ve daha adil ve sürdürülebilir bir geleceğe doğru gerçek fırsatlar yaratmaya adanmıştır.",
-    ctaPrimary: "Misyonumuzu Keşfedin",
+    sub: "Gençleri güçlendiriyor, toplumu destekliyor ve daha adil, sürdürülebilir bir gelecek için gerçek fırsatlar yaratıyoruz.",
+    ctaPrimary: "Programlarımızı Keşfedin",
     ctaSecondary: "Bize Katılın",
     badge: "Shababna Sanad Kalkınma ve Destek Derneği",
     brandSpan: "Shababna Sanad",

@@ -297,18 +297,18 @@ export function Wordmark({
   className?: string;
 }) {
   return (
-    <div className={`flex items-center gap-2.5 sm:gap-3 ${className}`}>
+    <div className={`flex items-center gap-2 sm:gap-3 ${className}`}>
       {/* Logo icon — static, no hover / transition effects */}
       <img
         src={`${import.meta.env.BASE_URL}images/shababnaSanadLogo.png`}
         alt=""
-        className="h-10 w-10 sm:h-11 sm:w-11 object-contain select-none shrink-0"
+        className="h-8 w-8 sm:h-11 sm:w-11 object-contain select-none shrink-0"
         draggable={false}
         loading="eager"
       />
       {/* Logo name — white on dark surfaces (hero / navy footer) */}
       <span
-        className={`text-lg sm:text-xl font-bold tracking-tight leading-none whitespace-nowrap ${
+        className={`text-sm sm:text-xl font-bold tracking-tight leading-none whitespace-nowrap ${
           light ? "text-white" : "text-navy-900"
         }`}
       >
