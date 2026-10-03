@@ -173,24 +173,24 @@ export function AreasOfWork() {
       eyebrow={t.areas.eyebrow}
       title={t.areas.title}
     >
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+      <div className="grid grid-cols-2 gap-3 sm:gap-5 md:gap-6 lg:grid-cols-3">
         {t.areas.items.map((area, i) => {
           const Icon = (Icons as unknown as Record<string, Icons.LucideIcon>)[
             area.icon
           ] as Icons.LucideIcon | undefined;
           return (
             <Reveal key={area.key} delay={i * 80}>
-              <article className="group h-full bg-white border border-sand-200 rounded-lg p-7 md:p-8 hover:border-teal-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                <div className="flex items-center gap-4 mb-5">
-                  <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-navy-800 text-gold-300 group-hover:bg-teal-600 group-hover:text-white transition-colors">
+              <article className="group h-full bg-white border border-sand-200 rounded-lg p-4 sm:p-7 md:p-8 hover:border-teal-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-5">
+                  <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-navy-800 text-gold-300 group-hover:bg-teal-600 group-hover:text-white transition-colors">
                     {Icon ? <Icon size={24} strokeWidth={1.8} /> : null}
                   </div>
                   <div className="h-px flex-1 bg-sand-200 group-hover:bg-teal-200 transition-colors" />
                 </div>
-                <h3 className="text-xl font-bold text-navy-900 mb-3 leading-snug">
+                <h3 className="text-lg sm:text-xl font-bold text-navy-900 mb-2 sm:mb-3 leading-snug">
                   <BiText value={area.title} />
                 </h3>
-                <p className="text-navy-600 leading-relaxed text-[15px]">
+                <p className="text-sm sm:text-[15px] text-navy-600 leading-relaxed">
                   <BiText value={area.desc} />
                 </p>
                 <div
