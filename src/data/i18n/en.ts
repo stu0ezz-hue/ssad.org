@@ -6,7 +6,7 @@ import { healthcareProgram } from "../content-config";
 
 export const en = {
   siteName: "Shababna Sanad",
-  siteTagline: "Shababna Sanad Foundation",
+  siteTagline: "Shababna Sanad Association for Development and Support",
 
   nav: {
     home: "Home",
@@ -21,10 +21,10 @@ export const en = {
 
   hero: {
     headline: "Together We Create Impact... Together We Build a Better Future",
-    sub: "Shababna Sanad is a foundation dedicated to empowering youth, supporting communities, and creating real opportunities toward a fairer, more sustainable future.",
+    sub: "Shababna Sanad Association for Development and Support is dedicated to empowering youth, supporting communities, and creating real opportunities toward a fairer, more sustainable future.",
     ctaPrimary: "Discover Our Mission",
     ctaSecondary: "Contribute With Us",
-    badge: "Humanitarian & Development Foundation",
+    badge: "Shababna Sanad Association for Development and Support",
     brandSpan: "Shababna Sanad",
     stats: {
       beneficiaries: "Beneficiaries",
@@ -36,9 +36,9 @@ export const en = {
 
   about: {
     title: "Who We Are",
-    eyebrow: "The Foundation",
+    eyebrow: "The Association",
     paragraphs: [
-      "Shababna Sanad is a humanitarian and development foundation that believes people are at the heart of every change, and that youth are the energy and fuel of society toward the future.",
+      "Shababna Sanad Association for Development and Support is a humanitarian and development association that believes people are at the heart of every change, and that youth are the energy and fuel of society toward the future.",
       "We work on empowering youth and supporting communities through development programs and humanitarian initiatives that create lasting impact and strengthen values of volunteering, partnership, and collaboration.",
     ],
     cta: "Learn More About Us",
@@ -166,7 +166,7 @@ export const en = {
         image: "/images/story3.jpg",
         name: "Local Volunteer Team",
         program: "Community Development",
-        quote: "Volunteering with the foundation changed our view of giving, and we became part of a real movement making a difference in our community.",
+        quote: "Volunteering with the association changed our view of giving, and we became part of a real movement making a difference in our community.",
       },
     ],
   },
@@ -217,7 +217,7 @@ export const en = {
   },
 
   footer: {
-    description: "Shababna Sanad Foundation — a humanitarian and development foundation dedicated to empowering youth, supporting communities, and creating sustainable impact.",
+    description: "Shababna Sanad Association for Development and Support — a humanitarian and development association dedicated to empowering youth, supporting communities, and creating sustainable impact.",
     navTitle: "Quick Links",
     supportTitle: "Support Us",
     support: {
@@ -229,15 +229,15 @@ export const en = {
       privacy: "Privacy Policy",
       terms: "Terms & Conditions",
     },
-    copyright: "© 2026 Shababna Sanad Foundation. All Rights Reserved.",
+    copyright: "© 2026 Shababna Sanad Association for Development and Support. All Rights Reserved.",
   },
 
   seo: {
-    title: "Shababna Sanad Foundation — Humanitarian and Development Foundation",
-    description: "Shababna Sanad is a humanitarian and development foundation empowering youth, supporting communities, and creating real opportunities for a fairer, more sustainable future.",
-    socialTitle: "Shababna Sanad Foundation",
-    socialDescription: "A humanitarian and development foundation dedicated to empowering youth, supporting communities, and creating sustainable impact.",
-    keywords: "Shababna Sanad, foundation, NGO, nonprofit, empowerment, youth, community, humanitarian",
+    title: "Shababna Sanad Association for Development and Support — Humanitarian and Development Association",
+    description: "Shababna Sanad Association for Development and Support is a humanitarian and development association empowering youth, supporting communities, and creating real opportunities for a fairer, more sustainable future.",
+    socialTitle: "Shababna Sanad Association for Development and Support",
+    socialDescription: "A humanitarian and development association dedicated to empowering youth, supporting communities, and creating sustainable impact.",
+    keywords: "Shababna Sanad, association, NGO, nonprofit, empowerment, youth, community, humanitarian",
     locale: "en_US",
   },
 
@@ -255,6 +255,11 @@ export const en = {
     downloadFile: "Download file",
     fileUnavailable: "Details for this project will be available soon.",
     programServices: "Services and achievements",
+    previousProgram: "Previous program",
+    nextProgram: "Next program",
+    goToProgram: "Go to program",
+    programPagination: "Program pagination",
+    swipePrograms: "Swipe to explore programs",
     heroLabel: "Main content",
     scrollToContent: "Scroll to content",
   },

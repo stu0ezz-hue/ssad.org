@@ -6,7 +6,7 @@ import { healthcareProgram } from "../content-config";
 
 export const tr = {
   siteName: "Shababna Sanad",
-  siteTagline: "Shababna Sanad Vakfı",
+  siteTagline: "Shababna Sanad Kalkınma ve Destek Derneği",
 
   nav: {
     home: "Ana Sayfa",
@@ -21,10 +21,10 @@ export const tr = {
 
   hero: {
     headline: "Birlikte Etki Yaratıyoruz... Birlikte Daha İyi Bir Gelecek İnşa Ediyoruz",
-    sub: "Shababna Sanad, gençleri güçlendirmeye, toplulukları desteklemeye ve daha adil ve sürdürülebilir bir geleceğe doğru gerçek fırsatlar yaratmaya adanmış bir vakıftır.",
+    sub: "Shababna Sanad Kalkınma ve Destek Derneği, gençleri güçlendirmeye, toplulukları desteklemeye ve daha adil ve sürdürülebilir bir geleceğe doğru gerçek fırsatlar yaratmaya adanmıştır.",
     ctaPrimary: "Misyonumuzu Keşfedin",
     ctaSecondary: "Bize Katılın",
-    badge: "İnsani ve Kalkınma Vakfı",
+    badge: "Shababna Sanad Kalkınma ve Destek Derneği",
     brandSpan: "Shababna Sanad",
     stats: {
       beneficiaries: "Yararlanıcı",
@@ -36,9 +36,9 @@ export const tr = {
 
   about: {
     title: "Biz Kimiz",
-    eyebrow: "Vakıf",
+    eyebrow: "Dernek",
     paragraphs: [
-      "Shababna Sanad, insanı her değişimin merkezine koyan, gençleri toplumun enerjisi ve geleceğin yakıtı olarak gören insani ve kalkınma odaklı bir vakıftır.",
+      "Shababna Sanad Kalkınma ve Destek Derneği, insanı her değişimin merkezine koyan, gençleri toplumun enerjisi ve geleceğin yakıtı olarak gören insani ve kalkınma odaklı bir dernektir.",
       "Gençleri güçlendirmek ve topluluğu desteklemek için kalıcı etki yaratan kalkınma programları ve insani girişimler yürütüyor; gönüllülük, ortaklık ve iş birliği değerlerini güçlendiriyoruz.",
     ],
     cta: "Daha Fazla Bilgi Edinin",
@@ -166,7 +166,7 @@ export const tr = {
         image: "/images/story3.jpg",
         name: "Yerel Gönüllü Ekip",
         program: "Toplumsal Kalkınma",
-        quote: "Vakıfta gönüllü olmak verme anlayışımızı değiştirdi; toplumumuzda fark yaratan gerçek bir hareketin parçası olduk.",
+        quote: "Dernekte gönüllü olmak verme anlayışımızı değiştirdi; toplumumuzda fark yaratan gerçek bir hareketin parçası olduk.",
       },
     ],
   },
@@ -217,7 +217,7 @@ export const tr = {
   },
 
   footer: {
-    description: "Shababna Sanad Vakfı — gençleri güçlendirmeye, toplulukları desteklemeye ve sürdürülebilir etki yaratmaya adanmış insani ve kalkınma odaklı bir vakıftır.",
+    description: "Shababna Sanad Kalkınma ve Destek Derneği — gençleri güçlendirmeye, toplulukları desteklemeye ve sürdürülebilir etki yaratmaya adanmış insani ve kalkınma odaklı bir dernektir.",
     navTitle: "Hızlı Bağlantılar",
     supportTitle: "Bizi Destekleyin",
     support: {
@@ -229,15 +229,15 @@ export const tr = {
       privacy: "Gizlilik Politikası",
       terms: "Şartlar ve Koşullar",
     },
-    copyright: "© 2026 Shababna Sanad Vakfı. Tüm hakları saklıdır.",
+    copyright: "© 2026 Shababna Sanad Kalkınma ve Destek Derneği. Tüm hakları saklıdır.",
   },
 
   seo: {
-    title: "Shababna Sanad Vakfı — İnsani Yardım ve Kalkınma",
-    description: "Shababna Sanad Vakfı, gençleri güçlendirir, toplulukları destekler ve daha adil, sürdürülebilir bir gelecek için gerçek fırsatlar yaratır.",
-    socialTitle: "Shababna Sanad Vakfı",
-    socialDescription: "Gençleri güçlendirmeye, toplulukları desteklemeye ve kalıcı etki yaratmaya adanmış insani yardım ve kalkınma vakfı.",
-    keywords: "Shababna Sanad, vakıf, gençlik, güçlendirme, kalkınma, insani yardım, toplum, gönüllülük",
+    title: "Shababna Sanad Kalkınma ve Destek Derneği — İnsani Yardım ve Kalkınma Derneği",
+    description: "Shababna Sanad Kalkınma ve Destek Derneği, gençleri güçlendirir, toplulukları destekler ve daha adil, sürdürülebilir bir gelecek için gerçek fırsatlar yaratır.",
+    socialTitle: "Shababna Sanad Kalkınma ve Destek Derneği",
+    socialDescription: "Gençleri güçlendirmeye, toplulukları desteklemeye ve kalıcı etki yaratmaya adanmış insani yardım ve kalkınma derneği.",
+    keywords: "Shababna Sanad, dernek, gençlik, güçlendirme, kalkınma, insani yardım, toplum, gönüllülük",
     locale: "tr_TR",
   },
 
@@ -255,6 +255,11 @@ export const tr = {
     downloadFile: "Dosyayı indir",
     fileUnavailable: "Bu projenin detayları yakında yayınlanacaktır.",
     programServices: "Hizmetler ve başarılar",
+    previousProgram: "Önceki program",
+    nextProgram: "Sonraki program",
+    goToProgram: "Programa git",
+    programPagination: "Program sayfaları",
+    swipePrograms: "Programlar arasında gezinmek için kaydırın",
     heroLabel: "Ana içerik",
     scrollToContent: "İçeriğe kaydır",
   },
