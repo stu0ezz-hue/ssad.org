@@ -145,32 +145,6 @@ export const en = {
     ],
   },
 
-  stories: {
-    title: "Stories That Make a Difference",
-    eyebrow: "Human Stories",
-    readStory: "Read Story",
-    items: [
-      {
-        image: "/images/story1.jpg",
-        name: "Ahmed, 23",
-        program: "Youth Empowerment Program",
-        quote: "The program gave me the skills and confidence I needed to start my own business, and today I can support my family.",
-      },
-      {
-        image: "/images/story2.jpg",
-        name: "Layla, University Student",
-        program: "Education For All Initiative",
-        quote: "Thanks to the support I received, I was able to complete my university studies and achieve my dream of becoming a teacher.",
-      },
-      {
-        image: "/images/story3.jpg",
-        name: "Local Volunteer Team",
-        program: "Community Development",
-        quote: "Volunteering with the association changed our view of giving, and we became part of a real movement making a difference in our community.",
-      },
-    ],
-  },
-
   partners: {
     title: "Our Partners",
     eyebrow: "Partners in Impact",

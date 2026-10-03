@@ -145,32 +145,6 @@ export const tr = {
     ],
   },
 
-  stories: {
-    title: "Fark Yaratan Hikayeler",
-    eyebrow: "İnsani Hikayeler",
-    readStory: "Hikayeyi Oku",
-    items: [
-      {
-        image: "/images/story1.jpg",
-        name: "Ahmed, 23",
-        program: "Gençlik Güçlendirme Programı",
-        quote: "Program bana kendi işimi kurmam için gereken becerileri ve özgüveni kazandırdı; bugün ailemi geçindirebiliyorum.",
-      },
-      {
-        image: "/images/story2.jpg",
-        name: "Leyla, Üniversite Öğrencisi",
-        program: "Herkese Eğitim Girişimi",
-        quote: "Aldığım destek sayesinde üniversite eğitimimi tamamlayabildim ve öğretmen olma hayalimi gerçekleştirdim.",
-      },
-      {
-        image: "/images/story3.jpg",
-        name: "Yerel Gönüllü Ekip",
-        program: "Toplumsal Kalkınma",
-        quote: "Dernekte gönüllü olmak verme anlayışımızı değiştirdi; toplumumuzda fark yaratan gerçek bir hareketin parçası olduk.",
-      },
-    ],
-  },
-
   partners: {
     title: "İş Ortaklarımız",
     eyebrow: "Etkide Ortaklarımız",

@@ -141,7 +141,7 @@ export function Programs() {
     if (!pointerStart || pointerStart.pointerId !== event.pointerId) return;
     const delta = event.clientX - pointerStart.x;
     if (Math.abs(delta) > 48) {
-      const isNext = dir === "rtl" ? delta < 0 : delta > 0;
+      const isNext = dir === "rtl" ? delta > 0 : delta < 0;
       moveBy(isNext ? 1 : -1);
     }
     pointerStartRef.current = null;
@@ -170,7 +170,7 @@ export function Programs() {
             aria-label={t.programs.title}
             tabIndex={0}
             dir={dir}
-            className="relative h-[560px] select-none overflow-hidden touch-pan-y outline-none focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:ring-offset-4 sm:h-[620px] lg:h-[660px]"
+            className="relative h-[500px] select-none overflow-hidden touch-pan-y outline-none focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:ring-offset-4 sm:h-[540px] md:h-[620px] lg:h-[660px]"
             onKeyDown={handleCarouselKeyDown}
             onPointerDown={handlePointerDown}
             onPointerMove={handlePointerMove}
@@ -186,7 +186,7 @@ export function Programs() {
           >
             <div
               ref={trackRef}
-              className={`absolute inset-y-5 left-1/2 flex w-max items-stretch gap-2 md:inset-y-6 md:gap-6 ${isDragging ? "cursor-grabbing" : "cursor-grab"}`}
+              className={`absolute inset-y-5 left-1/2 flex w-max items-stretch gap-0 md:inset-y-6 md:gap-6 ${isDragging ? "cursor-grabbing" : "cursor-grab"}`}
               style={{
                 transform: `translate3d(calc(-50% + ${trackOffset}px), 0, 0)`,
                 transition: transitionEnabled && !isDragging
@@ -207,7 +207,7 @@ export function Programs() {
                     aria-roledescription="slide"
                     aria-label={`${program.title} ${logicalIndex + 1} / ${items.length}`}
                     aria-hidden={isClone || !isVisible}
-                    className={`group flex h-full w-[70vw] max-w-[620px] flex-none flex-col overflow-hidden rounded-lg border border-sand-200 bg-white shadow-md transition-[transform,opacity,box-shadow] duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] sm:w-[min(68vw,520px)] lg:w-[min(48vw,600px)] ${isActive ? "shadow-xl" : ""}`}
+                    className={`group flex h-full w-[76vw] max-w-[620px] flex-none flex-col overflow-hidden rounded-lg border border-sand-200 bg-white shadow-md transition-[transform,opacity,box-shadow] duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] sm:w-[min(68vw,520px)] lg:w-[min(48vw,600px)] ${isActive ? "shadow-xl" : ""}`}
                     style={{
                       transform: `scale(${isActive ? 1 : distance === 1 ? 0.88 : 0.8})`,
                       opacity: isActive ? 1 : distance === 1 ? 0.62 : 0.28,
@@ -397,7 +397,6 @@ export function Programs() {
     </Section>
   );
 }
-
 /* ---------- Impact Statistics ---------- */
 export function Impact() {
   const { t } = useLang();
@@ -430,17 +429,17 @@ export function Impact() {
           </div>
         </Reveal>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        <div className="grid grid-cols-2 gap-3 sm:gap-6 md:gap-8 lg:grid-cols-4">
           {t.impact.items.map((stat, i) => {
             const Icon = icons[i % icons.length];
             return (
               <Reveal key={i} delay={i * 100}>
-                <div className="relative text-center p-8 md:p-10 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg hover:bg-white/10 transition-colors">
+                <div className="relative text-center p-4 sm:p-8 md:p-10 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg hover:bg-white/10 transition-colors">
                   <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gold-400/20 text-gold-300 mb-5">
                     <Icon size={26} strokeWidth={1.8} />
                   </div>
                   <div
-                    className="w-full min-w-0 whitespace-nowrap text-4xl font-bold text-white mb-3 tabular-nums"
+                    className="w-full min-w-0 whitespace-nowrap text-2xl sm:text-4xl font-bold text-white mb-3 tabular-nums"
                     dir="ltr"
                   >
                     <Counter value={stat.value} suffix={stat.suffix} />
@@ -455,61 +454,5 @@ export function Impact() {
         </div>
       </div>
     </section>
-  );
-}
-
-/* ---------- Stories ---------- */
-export function Stories() {
-  const { t } = useLang();
-
-  return (
-    <Section
-      eyebrow={t.stories.eyebrow}
-      title={t.stories.title}
-      subtle
-    >
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-        {t.stories.items.map((story, i) => (
-          <Reveal key={i} delay={i * 100}>
-            <article className="group h-full bg-white border border-sand-200 rounded-lg overflow-hidden hover:shadow-2xl transition-all duration-300 flex flex-col">
-              <div className="relative overflow-hidden aspect-[4/3]">
-                <img
-                  src={resolvePublicAsset(story.image)}
-                  alt={story.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div
-                  className="absolute inset-0 bg-gradient-to-t from-navy-900/50 to-transparent"
-                  aria-hidden
-                />
-              </div>
-              <div className="p-6 md:p-7 flex-1 flex flex-col">
-                <div className="inline-flex items-center gap-2 mb-4">
-                  <div className="h-px w-6 bg-gold-400" />
-                  <span className="text-xs font-semibold text-teal-600 uppercase tracking-wide">
-                    <BiText value={story.program} />
-                  </span>
-                </div>
-                <blockquote className="text-navy-700 leading-relaxed text-[15px] mb-5 flex-1">
-                  <span className="text-3xl text-gold-400 font-serif leading-none">"</span>
-                  <BiText value={story.quote} />
-                  <span className="text-3xl text-gold-400 font-serif leading-none">"</span>
-                </blockquote>
-                <div className="pt-5 border-t border-sand-200 flex items-center justify-between">
-                  <div className="font-semibold text-navy-900">
-                    <BiText value={story.name} />
-                  </div>
-                  <button className="text-sm font-semibold text-teal-600 hover:text-teal-700 transition-colors">
-                    {t.stories.readStory}
-                  </button>
-                </div>
-              </div>
-            </article>
-          </Reveal>
-        ))}
-      </div>
-    </Section>
   );
 }

@@ -2,7 +2,7 @@ import { LanguageProvider, useLang } from "./contexts/LanguageContext";
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { About, MissionVision, AreasOfWork } from "./components/TopSections";
-import { Programs, Impact, Stories } from "./components/MiddleSections";
+import { Programs, Impact } from "./components/MiddleSections";
 import { Partners, CTA, Contact } from "./components/BottomSections";
 import { Footer } from "./components/Footer";
 
@@ -31,7 +31,6 @@ export default function App() {
           <AreasOfWork />
           <Programs />
           <Impact />
-          <Stories />
           <Partners />
           <CTA />
           <Contact />

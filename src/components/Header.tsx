@@ -10,7 +10,7 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeHref, setActiveHref] = useState(() => {
     const hash = typeof window !== "undefined" ? window.location.hash : "";
-    return ["#home", "#about", "#areas", "#impact", "#programs", "#contact"].includes(hash)
+    return ["#home", "#about", "#areas", "#programs", "#impact", "#contact"].includes(hash)
       ? hash
       : "#home";
   });
@@ -29,7 +29,7 @@ export function Header() {
 
   // Resolve one active section per animation frame to avoid observer churn during smooth scroll.
   useEffect(() => {
-    const sectionIds = ["home", "about", "areas", "impact", "programs", "contact"];
+    const sectionIds = ["home", "about", "areas", "programs", "impact", "contact"];
     const sections = sectionIds.map((id) => document.getElementById(id));
     if (!sections.length) return;
 
@@ -140,8 +140,8 @@ export function Header() {
     { href: "#home", label: t.nav.home },
     { href: "#about", label: t.nav.about },
     { href: "#areas", label: t.nav.areas },
-    { href: "#impact", label: t.nav.impact },
     { href: "#programs", label: t.nav.programs },
+    { href: "#impact", label: t.nav.impact },
     { href: "#contact", label: t.nav.contact },
   ];
 
