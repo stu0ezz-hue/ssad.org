@@ -15,7 +15,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative isolate min-h-[calc(100svh-2.5rem)] flex items-center overflow-hidden sm:min-h-screen"
+      className="relative isolate flex min-h-[100svh] items-center overflow-hidden sm:min-h-screen"
       aria-label={t.a11y.heroLabel}
     >
       {/* Background image */}
@@ -41,14 +41,14 @@ export function Hero() {
         aria-hidden
       />
 
-      <div className="relative z-10 mx-auto max-w-7xl w-full px-5 sm:px-8 lg:px-12 pt-20 pb-10 sm:pt-32 sm:pb-20 md:pt-40 md:pb-28">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pb-8 pt-24 sm:px-8 sm:pb-20 sm:pt-32 lg:px-12 md:pt-40 md:pb-28">
         <div className="max-w-3xl">
           <div className="inline-flex items-center gap-2 mb-4 sm:mb-6 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-xs sm:text-sm font-medium">
             <span className="h-1.5 w-1.5 rounded-full bg-gold-300 animate-pulse" />
             <span>{t.hero.badge}</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.2] sm:leading-[1.15] tracking-tight mb-4 sm:mb-6">
+          <h1 className="text-balance text-[clamp(2rem,8vw,3rem)] font-bold leading-[1.22] tracking-tight text-white sm:text-5xl sm:leading-[1.15] lg:text-6xl xl:text-7xl mb-4 sm:mb-6">
             <BiText value={t.hero.headline} as="span" />
             <span className="hidden sm:block mt-2 text-gold-300 text-3xl lg:text-4xl font-semibold tracking-tight">
               {t.hero.brandSpan}
@@ -59,16 +59,16 @@ export function Hero() {
             <BiText value={t.hero.sub} />
           </p>
 
-          <div className="flex flex-wrap gap-3 sm:gap-4">
+          <div className="grid grid-cols-1 gap-3 sm:flex sm:flex-wrap sm:gap-4">
             <a
               href="#programs"
-              className="inline-flex min-h-12 items-center justify-center gap-2 bg-gold-400 hover:bg-gold-300 text-navy-900 font-semibold px-5 sm:px-7 py-3 rounded-md transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+              className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-md bg-gold-400 px-5 py-3 font-semibold text-navy-900 shadow-lg transition-all hover:-translate-y-0.5 hover:bg-gold-300 hover:shadow-xl sm:w-auto sm:px-7"
             >
               {t.hero.ctaPrimary}
             </a>
             <a
               href="#cta"
-              className="inline-flex min-h-12 items-center justify-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/40 text-white font-semibold px-5 sm:px-7 py-3 rounded-md transition-all"
+              className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-md border border-white/40 bg-white/10 px-5 py-3 font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/20 sm:w-auto sm:px-7"
             >
               {t.hero.ctaSecondary}
             </a>
@@ -76,11 +76,11 @@ export function Hero() {
         </div>
 
         {/* Stats strip */}
-        <div className="mt-8 sm:mt-16 md:mt-24 grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4 md:gap-6 max-w-4xl">
+        <div className="mt-10 grid max-w-4xl grid-cols-2 gap-3 sm:mt-16 sm:gap-4 md:mt-24 md:grid-cols-4 md:gap-6">
             {heroStats.map((stat, i) => (
               <div
                 key={i}
-                className="relative bg-white/10 sm:bg-white/5 backdrop-blur-md border border-white/20 sm:border-white/15 rounded-lg p-2 sm:p-3 md:p-4 lg:p-6 hover:bg-white/10 transition-colors"
+                className="relative rounded-lg border border-white/20 bg-white/10 p-3 backdrop-blur-md transition-colors hover:bg-white/10 sm:border-white/15 sm:p-4 lg:p-6"
               >
                 <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gold-300 mb-1 sm:mb-1.5 tabular-nums">
                   <Counter value={stat.value} suffix={stat.suffix} />

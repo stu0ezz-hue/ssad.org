@@ -160,28 +160,26 @@ export function Contact() {
       setStatus("error");
       return;
     }
-ص
     const cleanPayload = normalizeContactPayload(values);
-    void cleanPayload;
     setIsSubmitting(true);
     setStatus("idle");
 
     try {
       const endpoint = import.meta.env.VITE_CONTACT_ENDPOINT;
-      if (endpoint) {
-        const response = await fetch(endpoint, {
-          method: "POST",
-          headers: { "content-type": "application/json" },
-          body: JSON.stringify(cleanPayload),
-        });
+      if (!endpoint) throw new Error("Contact endpoint is not configured");
 
-        if (!response.ok) {
-          const result = (await response.json().catch(() => null)) as {
-            errors?: ContactErrors;
-          } | null;
-          if (result?.errors) setErrors(result.errors);
-          throw new Error("Contact submission failed");
-        }
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(cleanPayload),
+      });
+
+      if (!response.ok) {
+        const result = (await response.json().catch(() => null)) as {
+          errors?: ContactErrors;
+        } | null;
+        if (result?.errors) setErrors(result.errors);
+        throw new Error("Contact submission failed");
       }
 
       setStatus("success");
@@ -380,12 +378,14 @@ export function Contact() {
                 {t.contact.form.success}
               </div>
             )}
-            {status === "error" && Object.keys(errors).length > 0 && (
+            {status === "error" && (
               <div
                 role="alert"
                 className="mt-5 p-4 bg-red-50 border border-red-200 text-red-700 rounded-md text-sm"
               >
-                {t.contact.form.validationSummary}
+                {Object.keys(errors).length > 0
+                  ? t.contact.form.validationSummary
+                  : t.contact.form.error}
               </div>
             )}
 

@@ -61,7 +61,15 @@ export async function handleContactRequest(request: Request, clientKey: string) 
   const values = Object.fromEntries(
     fields.map((field) => [field, typeof body[field] === "string" ? body[field] : ""]),
   ) as Partial<Record<ContactField, string>>;
-  const errors = validateContactValues(values);
+  const errors = validateContactValues(values, {
+    nameRequired: "Name is required",
+    nameInvalid: "Please enter a valid name",
+    email: "Please enter a valid email address",
+    phone: "Please enter a valid phone number",
+    subjectRequired: "Subject is required",
+    subjectInvalid: "Please enter a valid subject",
+    message: "Message must be between 10 and 3000 characters",
+  });
 
   if (Object.keys(errors).length > 0) {
     return json({ errors }, 422);

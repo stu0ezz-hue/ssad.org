@@ -122,7 +122,7 @@ export function Header() {
   // Close mobile menu on resize to desktop
   useEffect(() => {
     const onResize = () => {
-      if (window.innerWidth >= 2000) setMobileOpen(false);
+      if (window.innerWidth >= 1024) setMobileOpen(false);
     };
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
