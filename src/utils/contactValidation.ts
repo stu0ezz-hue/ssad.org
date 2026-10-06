@@ -11,7 +11,7 @@ export type ContactPayload = {
 export type ContactErrors = Partial<Record<ContactField, string>>;
 
 const ARABIC_ERROR_MESSAGES: Record<ContactField, string> = {
-  name: "يرجى إدخال اسم صحيح من حرفين إلى 100 حرف، باستخدام الأحرف والمسافات فقط.",
+  name: "الاسم مطلوب",
   email: "يرجى إدخال بريد إلكتروني صحيح.",
   phone: "يرجى إدخال رقم هاتف صحيح يتكون من 7 إلى 15 رقمًا.",
   subject: "يجب ألا يتجاوز الموضوع 150 حرفًا.",
