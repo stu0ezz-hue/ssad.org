@@ -148,7 +148,6 @@ export const en = {
   partners: {
     title: "Our Partners",
     eyebrow: "Partners in Impact",
-    note: "Official partner announcement coming soon. Contact us to inquire about partnership opportunities.",
     items: ["Partner A", "Partner B", "Partner C", "Partner D", "Partner E", "Partner F"],
   },
 

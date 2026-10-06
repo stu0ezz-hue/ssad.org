@@ -111,7 +111,7 @@ export function MissionVision() {
   const { t } = useLang();
 
   return (
-    <section id="mission" className="relative bg-navy-900 text-white overflow-hidden">
+    <section id="mission" className="relative flex min-h-[100svh] items-center bg-navy-900 text-white overflow-hidden md:min-h-0 md:block">
       {/* Subtle background pattern */}
       <div
         className="absolute inset-0 opacity-[0.04]"
@@ -122,7 +122,7 @@ export function MissionVision() {
         aria-hidden
       />
 
-      <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12 py-20 md:py-28">
+      <div className="relative mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12 py-20 md:py-28">
         {/* Mission */}
         <Reveal>
           <div className="max-w-5xl">

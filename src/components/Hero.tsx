@@ -15,7 +15,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative isolate min-h-[calc(100svh-2.5rem)] flex items-center overflow-hidden sm:min-h-screen"
+      className="relative isolate flex min-h-[100svh] items-stretch overflow-hidden sm:min-h-screen sm:items-center"
       aria-label={t.a11y.heroLabel}
     >
       {/* Background image */}
@@ -41,7 +41,7 @@ export function Hero() {
         aria-hidden
       />
 
-      <div className="relative z-10 mx-auto max-w-7xl w-full px-5 sm:px-8 lg:px-12 pt-20 pb-10 sm:pt-32 sm:pb-20 md:pt-40 md:pb-28">
+      <div className="relative z-10 mx-auto flex min-h-[100svh] w-full max-w-7xl flex-col justify-between px-5 pt-16 pb-6 sm:min-h-0 sm:justify-start sm:px-8 sm:pt-32 sm:pb-20 md:pt-40 md:pb-28 lg:px-12">
         <div className="max-w-3xl">
           <div className="inline-flex items-center gap-2 mb-4 sm:mb-6 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-xs sm:text-sm font-medium">
             <span className="h-1.5 w-1.5 rounded-full bg-gold-300 animate-pulse" />

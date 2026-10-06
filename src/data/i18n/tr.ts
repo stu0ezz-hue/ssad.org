@@ -148,7 +148,6 @@ export const tr = {
   partners: {
     title: "İş Ortaklarımız",
     eyebrow: "Etkide Ortaklarımız",
-    note: "İş ortaklarının resmi duyurusu yakında yapılacaktır. Ortaklık fırsatları hakkında bilgi almak için bizimle iletişime geçin.",
     items: ["Partner A", "Partner B", "Partner C", "Partner D", "Partner E", "Partner F"],
   },
 

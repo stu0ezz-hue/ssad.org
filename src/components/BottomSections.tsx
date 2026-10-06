@@ -34,11 +34,6 @@ export function Partners() {
         </div>
       </Reveal>
 
-      <Reveal delay={180}>
-        <p className="text-center mt-10 text-sm text-navy-600 italic max-w-2xl mx-auto">
-          {t.partners.note}
-        </p>
-      </Reveal>
     </Section>
   );
 }
@@ -50,7 +45,7 @@ export function CTA() {
   return (
     <section
       id="cta"
-      className="relative overflow-hidden bg-navy-900 text-white"
+      className="relative flex min-h-[100svh] items-center overflow-hidden bg-navy-900 text-white md:min-h-0 md:block"
     >
       <div
         className="absolute inset-0 opacity-20"
@@ -60,7 +55,7 @@ export function CTA() {
             "radial-gradient(ellipse at 20% 50%, rgba(224, 180, 82, 0.5) 0%, transparent 50%), radial-gradient(ellipse at 80% 50%, rgba(20, 125, 96, 0.4) 0%, transparent 50%)",
         }}
       />
-      <div className="relative mx-auto max-w-5xl px-5 sm:px-8 lg:px-12 py-20 md:py-28 text-center">
+      <div className="relative mx-auto w-full max-w-5xl px-5 sm:px-8 lg:px-12 py-20 md:py-28 text-center">
         <Reveal>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight mb-6">
             <BiText value={t.cta.title} />

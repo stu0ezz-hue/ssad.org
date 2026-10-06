@@ -403,7 +403,7 @@ export function Impact() {
   const icons = [Users, Heart, MapPin, Award];
 
   return (
-    <section id="impact" className="relative bg-navy-900 text-white overflow-hidden">
+    <section id="impact" className="relative flex min-h-[100svh] items-center bg-navy-900 text-white overflow-hidden md:min-h-0 md:block">
       <div
         className="absolute inset-0 opacity-10"
         style={{
@@ -413,7 +413,7 @@ export function Impact() {
         aria-hidden
       />
 
-      <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12 py-20 md:py-28">
+      <div className="relative mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12 py-20 md:py-28">
         <Reveal>
           <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
             <div className="flex items-center justify-center gap-3 mb-4">

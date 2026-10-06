@@ -214,9 +214,9 @@ export function Section({
   return (
     <section
       id={id}
-      className={`relative ${subtle ? "bg-sand-50" : "bg-white"} ${className}`}
+      className={`relative flex min-h-[100svh] items-center bg-white md:min-h-0 md:block ${subtle ? "bg-sand-50" : ""} ${className}`}
     >
-      <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12 py-20 md:py-28">
+      <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12 py-20 md:py-28">
         {(eyebrow || title) && (
           <div className="max-w-3xl mb-12 md:mb-16">
             {eyebrow && (
