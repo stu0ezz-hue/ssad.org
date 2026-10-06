@@ -8,7 +8,7 @@ import {
   type ContactErrors,
   type ContactField,
 } from "../utils/contactValidation";
-import { useEffect, useRef, useState, type ChangeEvent, type FormEvent } from "react";
+import { useState, type ChangeEvent, type FormEvent } from "react";
 
 /* ---------- Partners ---------- */
 export function Partners() {
@@ -105,7 +105,6 @@ export function Contact() {
   const [errors, setErrors] = useState<ContactErrors>({});
   const [touched, setTouched] = useState<Partial<Record<ContactField, boolean>>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const formRef = useRef<HTMLFormElement | null>(null);
 
   const readValues = (form: HTMLFormElement) => {
     const data = new FormData(form);
@@ -119,12 +118,7 @@ export function Contact() {
   };
 
   const validateForm = (form: HTMLFormElement) =>
-    validateContactValues(readValues(form), t.contact.form.errors);
-
-  useEffect(() => {
-    if (!formRef.current || Object.keys(touched).length === 0) return;
-    setErrors(validateForm(formRef.current));
-  }, [t, touched]);
+    validateContactValues(readValues(form));
 
   const handleFieldChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const field = e.currentTarget.name as ContactField;
@@ -132,7 +126,7 @@ export function Contact() {
     setTouched((current) => ({ ...current, [field]: true }));
     setErrors((current) => ({
       ...current,
-      [field]: getContactFieldError(field, { [field]: value }, t.contact.form.errors),
+      [field]: getContactFieldError(field, { [field]: value }),
     }));
     setStatus("idle");
   };
@@ -143,7 +137,7 @@ export function Contact() {
     setTouched((current) => ({ ...current, [field]: true }));
     setErrors((current) => ({
       ...current,
-      [field]: getContactFieldError(field, { [field]: value }, t.contact.form.errors),
+      [field]: getContactFieldError(field, { [field]: value }),
     }));
   };
 
@@ -160,7 +154,7 @@ export function Contact() {
       setStatus("error");
       return;
     }
-ص
+
     const cleanPayload = normalizeContactPayload(values);
     void cleanPayload;
     setIsSubmitting(true);
@@ -301,7 +295,6 @@ export function Contact() {
         {/* Form */}
         <Reveal delay={120} className="lg:col-span-3">
           <form
-            ref={formRef}
             onSubmit={handleSubmit}
             noValidate
             className="bg-white border border-sand-200 rounded-lg p-6 md:p-8 shadow-sm"
@@ -377,7 +370,7 @@ export function Contact() {
                 role="status"
                 className="mt-5 p-4 bg-teal-50 border border-teal-200 text-teal-800 rounded-md text-sm"
               >
-                {t.contact.form.success}
+                تم إرسال رسالتك بنجاح. سنتواصل معك قريبًا.
               </div>
             )}
             {status === "error" && Object.keys(errors).length > 0 && (
@@ -385,7 +378,7 @@ export function Contact() {
                 role="alert"
                 className="mt-5 p-4 bg-red-50 border border-red-200 text-red-700 rounded-md text-sm"
               >
-                {t.contact.form.validationSummary}
+                يرجى تصحيح الحقول المشار إليها قبل الإرسال.
               </div>
             )}
 

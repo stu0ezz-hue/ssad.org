@@ -10,14 +10,12 @@ export type ContactPayload = {
 
 export type ContactErrors = Partial<Record<ContactField, string>>;
 
-export type ContactValidationMessages = {
-  nameRequired: string;
-  nameInvalid: string;
-  email: string;
-  phone: string;
-  subjectRequired: string;
-  subjectInvalid: string;
-  message: string;
+const ARABIC_ERROR_MESSAGES: Record<ContactField, string> = {
+  name: "يرجى إدخال اسم صحيح من حرفين إلى 100 حرف، باستخدام الأحرف والمسافات فقط.",
+  email: "يرجى إدخال بريد إلكتروني صحيح.",
+  phone: "يرجى إدخال رقم هاتف صحيح يتكون من 7 إلى 15 رقمًا.",
+  subject: "يجب ألا يتجاوز الموضوع 150 حرفًا.",
+  message: "يجب أن تتراوح الرسالة بين 10 و3000 حرف.",
 };
 
 const NAME_PATTERN = /^[\p{Script=Arabic}\p{Script=Latin}\p{M}]+(?:[ '-][\p{Script=Arabic}\p{Script=Latin}\p{M}]+)*$/u;
@@ -48,10 +46,7 @@ export function normalizeContactPayload(input: Partial<Record<ContactField, stri
   };
 }
 
-export function validateContactPayload(
-  payload: ContactPayload,
-  messages: ContactValidationMessages,
-): ContactErrors {
+export function validateContactPayload(payload: ContactPayload): ContactErrors {
   const errors: ContactErrors = {};
   const nameLength = characterCount(payload.name);
   const messageLength = characterCount(payload.message);
@@ -62,14 +57,14 @@ export function validateContactPayload(
     nameLength > 100 ||
     !NAME_PATTERN.test(payload.name)
   ) {
-    errors.name = nameLength === 0 ? messages.nameRequired : messages.nameInvalid;
+    errors.name = ARABIC_ERROR_MESSAGES.name;
   }
 
   if (
     characterCount(payload.email) > 254 ||
     !EMAIL_PATTERN.test(payload.email)
   ) {
-    errors.email = messages.email;
+    errors.email = ARABIC_ERROR_MESSAGES.email;
   }
 
   if (payload.phone) {
@@ -81,16 +76,16 @@ export function validateContactPayload(
       phoneDigits.length < 7 ||
       phoneDigits.length > 15
     ) {
-      errors.phone = messages.phone;
+      errors.phone = ARABIC_ERROR_MESSAGES.phone;
     }
   }
 
   if (subjectLength > 150) {
-    errors.subject = messages.subjectInvalid;
+    errors.subject = ARABIC_ERROR_MESSAGES.subject;
   }
 
   if (messageLength < 10 || messageLength > 3000) {
-    errors.message = messages.message;
+    errors.message = ARABIC_ERROR_MESSAGES.message;
   }
 
   return errors;
@@ -98,14 +93,13 @@ export function validateContactPayload(
 
 export function validateContactValues(
   input: Partial<Record<ContactField, string>>,
-  messages: ContactValidationMessages,
 ): ContactErrors {
   const rawSubject = String(input.subject ?? "");
   const payload = normalizeContactPayload(input);
-  const errors = validateContactPayload(payload, messages);
+  const errors = validateContactPayload(payload);
 
   if (rawSubject.length > 0 && payload.subject.length === 0) {
-    errors.subject = messages.subjectInvalid;
+    errors.subject = ARABIC_ERROR_MESSAGES.subject;
   }
 
   return errors;
@@ -114,7 +108,6 @@ export function validateContactValues(
 export function getContactFieldError(
   field: ContactField,
   values: Partial<Record<ContactField, string>>,
-  messages: ContactValidationMessages,
 ) {
-  return validateContactValues(values, messages)[field];
+  return validateContactValues(values)[field];
 }
