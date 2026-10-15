@@ -230,6 +230,7 @@ export function Section({
   title,
   children,
   subtle = false,
+  compact = false,
 }: {
   id?: string;
   className?: string;
@@ -237,13 +238,18 @@ export function Section({
   title?: string;
   children: ReactNode;
   subtle?: boolean;
+  compact?: boolean;
 }) {
+  const outerLayout = compact ? "" : "flex min-h-svh items-center";
+  const innerSpacing = compact
+    ? "pt-10 pb-12 md:pt-12 md:pb-16 lg:pt-14 lg:pb-16"
+    : "py-20 md:py-28";
   return (
     <section
       id={title ? undefined : id}
-      className={`relative flex min-h-svh items-center bg-white ${subtle ? "bg-sand-50" : ""} ${className}`}
+      className={`relative ${outerLayout} bg-white ${subtle ? "bg-sand-50" : ""} ${className}`}
     >
-      <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12 py-20 md:py-28">
+      <div className={`mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12 ${innerSpacing}`}>
         {(eyebrow || title) && (
           <div
             id={id}

@@ -19,7 +19,7 @@ export function Partners() {
   });
 
   return (
-    <Section id="partners" eyebrow={t.partners.eyebrow} title={t.partners.title}>
+    <Section id="partners" eyebrow={t.partners.eyebrow} title={t.partners.title} compact>
       <Reveal>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
           {t.partners.items.map((name, i) => {
@@ -68,7 +68,7 @@ export function CTA() {
   return (
     <section
       id="cta"
-      className="relative flex min-h-svh items-center overflow-hidden bg-navy-900 text-white"
+      className="relative overflow-hidden bg-navy-900 text-white"
     >
       <div
         className="absolute inset-0 opacity-20"
@@ -78,7 +78,7 @@ export function CTA() {
             "radial-gradient(ellipse at 20% 50%, rgba(224, 180, 82, 0.5) 0%, transparent 50%), radial-gradient(ellipse at 80% 50%, rgba(20, 125, 96, 0.4) 0%, transparent 50%)",
         }}
       />
-      <div className="relative mx-auto w-full max-w-5xl px-5 sm:px-8 lg:px-12 py-20 md:py-28 text-center">
+      <div className="relative mx-auto w-full max-w-5xl px-5 sm:px-8 lg:px-12 pt-10 pb-12 md:pt-12 md:pb-16 lg:pt-14 lg:pb-16 text-center">
         <Reveal>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight mb-6">
             <BiText value={t.cta.title} />

@@ -405,7 +405,7 @@ export function Impact() {
   return (
     <section
       id="impact"
-      className="section-anchor relative flex min-h-svh items-center bg-navy-900 text-white overflow-hidden"
+      className="section-anchor relative bg-navy-900 text-white overflow-hidden"
     >
       <div
         className="absolute inset-0 opacity-10"
@@ -416,7 +416,7 @@ export function Impact() {
         aria-hidden
       />
 
-      <div className="relative mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12 py-20 md:py-28">
+      <div className="relative mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12 pt-10 pb-12 md:pt-12 md:pb-16 lg:pt-14 lg:pb-16">
         <div
           className="text-center max-w-3xl mx-auto mb-12 md:mb-16"
         >

@@ -202,12 +202,12 @@ export function Header() {
       role="banner"
       dir={dir}
     >
-      <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
-        <div className="flex h-14 sm:h-16 items-center justify-between gap-3 sm:gap-4">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
+        <div className="flex h-14 items-center justify-between gap-4 sm:h-16">
           {/* Logo */}
           <a
             href="#home"
-            className="order-1 flex items-center shrink-0 ml-2 sm:ml-3"
+            className="order-1 flex items-center shrink-0"
             aria-label={t.a11y.logo}
           >
             <Wordmark light={!useLightHeader} />
@@ -216,7 +216,7 @@ export function Header() {
           {/* Desktop Nav */}
           <nav
             ref={desktopNavRef}
-            className="relative hidden lg:flex items-center gap-1 order-2"
+            className="relative hidden lg:flex items-center gap-0.5 order-2 xl:gap-2"
             aria-label={t.a11y.mainNav}
           >
             {links.map((link) => (
@@ -228,7 +228,7 @@ export function Header() {
                 }}
                 onClick={(event) => onNavClick(event, link.href)}
                 aria-current={activeHref === link.href ? "page" : undefined}
-                className={`px-4 py-2 text-[14.5px] font-medium rounded-md transition-colors ${
+                className={`whitespace-nowrap px-2.5 py-2 text-[13.5px] font-medium rounded-md transition-colors xl:px-4 xl:text-[14.5px] ${
                   useLightHeader
                     ? "hover:bg-navy-50 hover:text-navy-900"
                     : "hover:bg-white/10 hover:text-white"
@@ -249,7 +249,7 @@ export function Header() {
             />
           </nav>
         {/* Right side */}
-          <div className="order-3 flex items-center gap-2 sm:gap-3">
+          <div className="order-3 flex items-center gap-3">
             {/* Language Switcher */}
             <div
               className={`hidden sm:flex items-center text-xs font-semibold rounded-md border ${
@@ -296,7 +296,7 @@ export function Header() {
             {/* Donate CTA */}
             <a
               href="#cta"
-              className="hidden sm:inline-flex shrink-0 items-center gap-2 whitespace-nowrap bg-gold-400 hover:bg-gold-300 text-navy-900 font-semibold text-[14px] px-5 py-2.5 rounded-md transition-all shadow-sm hover:shadow-md"
+              className="hidden sm:inline-flex shrink-0 min-h-10 items-center gap-2 whitespace-nowrap bg-gold-400 hover:bg-gold-300 text-navy-900 font-semibold text-[13px] px-4 py-2 rounded-md transition-all shadow-sm hover:shadow-md xl:text-[14px] xl:px-5"
             >
               <img
                 src={`${import.meta.env.BASE_URL}images/donate.png`}

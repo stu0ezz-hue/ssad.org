@@ -9,7 +9,7 @@ export function About() {
   const objectiveIcons = [GraduationCap, UsersRound, Sprout, HandHeart];
 
   return (
-    <section className="relative flex min-h-svh items-center bg-white">
+    <section id="about" className="section-anchor relative flex min-h-svh items-center bg-white">
       <div className="mx-auto grid max-w-7xl items-center gap-8 px-5 py-9 sm:px-8 sm:py-12 lg:grid-cols-[0.85fr_1.55fr] lg:gap-14 lg:px-12 lg:py-9">
         <Reveal className="order-2 lg:order-2">
           <div className="rounded-lg border border-navy-50 bg-navy-50/80 p-5 sm:p-7 lg:p-8">
@@ -40,7 +40,7 @@ export function About() {
           </div>
         </Reveal>
 
-        <div id="about" className="section-anchor order-1 text-start lg:order-1">
+        <div className="order-1 text-start lg:order-1">
           <Reveal>
             <div className="mb-3 flex items-center gap-3 text-sm font-semibold text-sky-700">
               <BiText value={t.about.eyebrow} />

@@ -17,7 +17,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative isolate min-h-svh bg-white"
+      className="relative isolate min-h-svh overflow-x-clip bg-white"
       aria-label={t.a11y.heroLabel}
     >
       <div className="absolute inset-x-0 top-0 z-0 h-[clamp(560px,82svh,680px)] overflow-hidden bg-navy-900 sm:h-[clamp(620px,72svh,740px)] lg:h-[clamp(700px,84svh,820px)]">
@@ -39,9 +39,9 @@ export function Hero() {
         />
       </div>
 
-      <div className="relative z-10 mx-auto flex min-h-[clamp(560px,82svh,680px)] w-full max-w-7xl flex-col px-4 pb-8 pt-24 sm:min-h-[clamp(620px,72svh,740px)] sm:px-6 lg:min-h-[clamp(700px,84svh,820px)] lg:px-12">
-        <div className="max-w-2xl self-start text-start lg:max-w-[42rem]">
-          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-3 py-1.5 text-xs font-medium text-white/95 backdrop-blur-sm sm:mb-6 sm:px-4 sm:py-2 lg:mb-3 lg:py-1">
+      <div className="relative z-10 mx-auto flex min-h-[clamp(560px,82svh,680px)] w-full max-w-7xl min-w-0 flex-col justify-center px-4 pb-24 pt-24 sm:min-h-[clamp(620px,72svh,740px)] sm:px-6 sm:pb-28 lg:min-h-[clamp(700px,84svh,820px)] lg:px-12 lg:pb-40">
+        <div className="w-full min-w-0 max-w-2xl self-start text-start lg:max-w-[42rem]">
+          <div className="mb-5 inline-flex max-w-full flex-wrap items-center gap-2 rounded-full border border-white/30 bg-white/10 px-3 py-1.5 text-xs font-medium text-white/95 backdrop-blur-sm sm:mb-6 sm:px-4 sm:py-2 lg:mb-3 lg:py-1">
             <span className="h-1.5 w-1.5 rounded-full bg-gold-300" />
             <span>{t.hero.badge}</span>
           </div>
@@ -72,19 +72,19 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="relative z-20 mx-auto -mt-8 mb-0 grid w-[calc(100%-2rem)] max-w-[1150px] grid-cols-2 rounded-[20px] bg-white shadow-[0_12px_36px_rgba(15,35,50,0.14)] sm:-mt-12 sm:w-[calc(100%-3rem)] lg:-mt-20 lg:w-[90%] lg:grid-cols-4">
+      <div className="relative z-20 mx-auto -mt-9 mb-10 grid w-[calc(100%-2rem)] max-w-[1150px] grid-cols-2 overflow-hidden rounded-[20px] bg-[linear-gradient(135deg,#ffffff_0%,#f8fcfb_50%,#eef8f6_100%)] p-1.5 shadow-[0_12px_36px_rgba(15,35,50,0.14)] sm:-mt-12 sm:w-[calc(100%-3rem)] sm:p-2 lg:-mt-24 lg:mb-14 lg:w-[86%] lg:max-w-[1150px] lg:grid-cols-4 lg:p-2.5">
         {heroStats.map(({ Icon, ...stat }, i) => (
           <div
             key={i}
-            className={`flex min-h-[100px] flex-col items-center justify-center gap-1 px-2 py-3 text-center sm:min-h-[112px] sm:px-5 lg:min-h-[136px] lg:py-5 ${i % 2 === 1 ? "border-s border-navy-100" : ""} ${i > 1 ? "border-t border-navy-100 lg:border-t-0" : ""} ${i > 0 ? "lg:border-s lg:border-navy-100" : ""}`}
+            className={`relative flex min-h-[104px] flex-col items-center justify-center gap-1.5 px-4 py-5 text-center sm:min-h-[118px] sm:px-6 sm:py-6 lg:min-h-[140px] lg:px-6 lg:py-7 ${i % 2 === 1 ? "border-s border-navy-100" : ""} ${i > 1 ? "border-t border-navy-100 lg:border-t-0" : ""} ${i > 0 ? "lg:border-s lg:border-navy-100" : ""}`}
           >
+            <Icon size={22} strokeWidth={1.7} className="shrink-0 text-sky-500" aria-hidden />
             <div className="text-xl font-bold leading-tight text-sky-500 tabular-nums sm:text-2xl lg:text-3xl">
               <Counter value={stat.value} suffix={stat.suffix} />
             </div>
-            <div className="text-[11px] font-medium leading-snug text-navy-500 sm:text-xs">
+            <div className="text-[11px] font-medium leading-snug text-navy-500 sm:text-xs lg:text-sm">
               <BiText value={stat.label} />
             </div>
-            <Icon size={20} strokeWidth={1.7} className="mt-1 shrink-0 text-sky-500" aria-hidden />
           </div>
         ))}
       </div>
