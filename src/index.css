@@ -5,16 +5,16 @@
 /* ===== Design tokens ===== */
 :root {
   /* Primary — Deep Navy */
-  --color-navy-50: #eef2f7;
-  --color-navy-100: #d6e0ee;
-  --color-navy-200: #a8b8d2;
-  --color-navy-300: #7b90b6;
-  --color-navy-400: #4e689a;
-  --color-navy-500: #21407e;
-  --color-navy-600: #18336a;
-  --color-navy-700: #112752;
-  --color-navy-800: #0b1f43;
-  --color-navy-900: #061529;
+  --color-navy-50: #f2f6fa;
+  --color-navy-100: #e3ebf2;
+  --color-navy-200: #c7d6e2;
+  --color-navy-300: #9fb5c6;
+  --color-navy-400: #7090a7;
+  --color-navy-500: #496d88;
+  --color-navy-600: #31556f;
+  --color-navy-700: #24465f;
+  --color-navy-800: #123653;
+  --color-navy-900: #0b2942;
 
   /* Secondary — Warm Teal/Green */
   --color-teal-50: #e9f5f2;
@@ -32,8 +32,8 @@
   --color-gold-50: #fbf5e8;
   --color-gold-100: #f5e6c2;
   --color-gold-200: #ebce8a;
-  --color-gold-300: #e0b452;
-  --color-gold-400: #d49e2e;
+  --color-gold-300: #ffd875;
+  --color-gold-400: #ffc857;
   --color-gold-500: #c08418;
   --color-gold-600: #9d6912;
   --color-gold-700: #7a500d;
@@ -41,10 +41,10 @@
   --color-gold-900: #362405;
 
   /* Neutral */
-  --color-sand-50: #fafaf7;
-  --color-sand-100: #f3f2ec;
-  --color-sand-200: #e8e6dc;
-  --color-sand-300: #d6d2c2;
+  --color-sand-50: #f2f6fa;
+  --color-sand-100: #eaf0f5;
+  --color-sand-200: #dce5ed;
+  --color-sand-300: #c8d5df;
   --color-sand-400: #b8b29b;
   --color-sand-500: #8c8772;
   --color-sand-600: #6b6656;
@@ -108,6 +108,16 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+}
+
+.section-anchor {
+  scroll-margin-top: 4.25rem;
+}
+
+@media (min-width: 40rem) {
+  .section-anchor {
+    scroll-margin-top: 4.75rem;
+  }
 }
 
 html[dir="rtl"] body {

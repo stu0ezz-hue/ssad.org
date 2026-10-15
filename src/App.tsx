@@ -1,7 +1,7 @@
 import { LanguageProvider, useLang } from "./contexts/LanguageContext";
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
-import { About, MissionVision, AreasOfWork } from "./components/TopSections";
+import { About, MissionVision } from "./components/TopSections";
 import { Programs, Impact } from "./components/MiddleSections";
 import { Partners, CTA, Contact } from "./components/BottomSections";
 import { Footer } from "./components/Footer";
@@ -28,10 +28,9 @@ export default function App() {
           <Hero />
           <About />
           <MissionVision />
-          <AreasOfWork />
           <Programs />
-          <Impact />
           <Partners />
+          <Impact />
           <CTA />
           <Contact />
         </main>

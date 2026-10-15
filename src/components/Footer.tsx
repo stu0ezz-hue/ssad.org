@@ -7,7 +7,7 @@ export function Footer() {
   const navLinks = [
     { href: "#about", label: t.nav.about },
     { href: "#programs", label: t.nav.programs },
-    { href: "#areas", label: t.nav.areas },
+    { href: "#partners", label: t.nav.partners },
     { href: "#impact", label: t.nav.impact },
     { href: "#contact", label: t.nav.contact },
   ];

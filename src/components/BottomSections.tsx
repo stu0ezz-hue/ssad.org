@@ -1,4 +1,4 @@
-import { Building2 } from "lucide-react";
+import { Building2, Plus } from "lucide-react";
 import { useLang } from "../contexts/LanguageContext";
 import { BiText, Button, Reveal, Section } from "./ui";
 import {
@@ -13,24 +13,47 @@ import { useState, type ChangeEvent, type FormEvent } from "react";
 /* ---------- Partners ---------- */
 export function Partners() {
   const { t } = useLang();
+  const partnershipEmail = new URLSearchParams({
+    subject: t.partners.emailSubject,
+    body: t.partners.emailBody,
+  });
 
   return (
-    <Section eyebrow={t.partners.eyebrow} title={t.partners.title}>
+    <Section id="partners" eyebrow={t.partners.eyebrow} title={t.partners.title}>
       <Reveal>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
-          {t.partners.items.map((name, i) => (
-            <div
-              key={i}
-              className="group flex items-center justify-center h-24 md:h-28 px-4 rounded-lg border border-sand-200 bg-white hover:border-teal-300 hover:shadow-md transition-all"
-            >
-              <div className="flex items-center gap-2.5 opacity-60 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all">
-                <Building2 size={22} className="text-navy-700" />
-                <span className="text-sm font-semibold text-navy-700">
-                  {name}
-                </span>
+          {t.partners.items.map((name, i) => {
+            const cardClassName = "group flex h-24 items-center justify-center rounded-lg border border-sand-200 bg-white px-4 transition-all hover:border-teal-300 hover:shadow-md md:h-28";
+
+            return (
+              <div key={name} className={cardClassName}>
+                {i < 2 ? (
+                  <img
+                    src={`${import.meta.env.BASE_URL}images/${i === 0 ? "rahma-austria.jpg" : "insan-vakfi.png"}`}
+                    alt={name}
+                    className="h-auto max-h-16 w-full max-w-[180px] object-contain"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                ) : (
+                  <div className="flex items-center gap-2.5 opacity-60 grayscale transition-all group-hover:opacity-100 group-hover:grayscale-0">
+                    <Building2 size={22} className="text-navy-700" />
+                    <span className="text-sm font-semibold text-navy-700">
+                      {name}
+                    </span>
+                  </div>
+                )}
               </div>
-            </div>
-          ))}
+            );
+          })}
+          <a
+            href={`mailto:Partnership@ssad.org?${partnershipEmail.toString()}`}
+            aria-label={`${t.partners.becomePartner} — Partnership@ssad.org`}
+            className="group flex h-24 flex-col items-center justify-center gap-1 rounded-lg border border-sand-200 bg-white px-4 text-navy-700 transition-all hover:border-teal-300 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:ring-offset-2 md:h-28"
+          >
+            <Plus size={25} strokeWidth={1.8} aria-hidden />
+            <span className="text-sm font-semibold">{t.partners.becomePartner}</span>
+          </a>
         </div>
       </Reveal>
 
@@ -45,7 +68,7 @@ export function CTA() {
   return (
     <section
       id="cta"
-      className="relative flex min-h-[100svh] items-center overflow-hidden bg-navy-900 text-white md:min-h-0 md:block"
+      className="relative flex min-h-svh items-center overflow-hidden bg-navy-900 text-white"
     >
       <div
         className="absolute inset-0 opacity-20"

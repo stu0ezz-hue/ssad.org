@@ -12,6 +12,11 @@ export function useInView<T extends HTMLElement = HTMLDivElement>(
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    if (typeof IntersectionObserver === "undefined") {
+      setInView(true);
+      return;
+    }
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -52,7 +57,7 @@ export function Reveal({
 export function Counter({
   value,
   suffix = "",
-  duration = 1800,
+  duration = 2000,
 }: {
   value: number;
   suffix?: string;
@@ -60,10 +65,28 @@ export function Counter({
 }) {
   const { lang } = useLang();
   const { ref, inView } = useInView<HTMLSpanElement>();
-  const [display, setDisplay] = useState(0);
+  const [display, setDisplay] = useState(() => {
+    if (typeof IntersectionObserver === "undefined") return value;
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return value;
+    }
+    return 0;
+  });
 
   useEffect(() => {
     if (!inView) return;
+    if (typeof IntersectionObserver === "undefined") {
+      setDisplay(value);
+      return;
+    }
+    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) {
+      setDisplay(value);
+      return;
+    }
+
     let raf = 0;
     const start = performance.now();
     const tick = (now: number) => {
@@ -78,7 +101,11 @@ export function Counter({
   }, [inView, value, duration]);
 
   return (
-    <span ref={ref} aria-live="polite">
+    <span
+      ref={ref}
+      aria-label={`${value.toLocaleString(lang)}${suffix}`}
+      aria-live="off"
+    >
       {display.toLocaleString(lang)}
       {suffix}
     </span>
@@ -213,12 +240,17 @@ export function Section({
 }) {
   return (
     <section
-      id={id}
-      className={`relative flex min-h-[100svh] items-center bg-white md:min-h-0 md:block ${subtle ? "bg-sand-50" : ""} ${className}`}
+      id={title ? undefined : id}
+      className={`relative flex min-h-svh items-center bg-white ${subtle ? "bg-sand-50" : ""} ${className}`}
     >
       <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12 py-20 md:py-28">
         {(eyebrow || title) && (
-          <div className="max-w-3xl mb-12 md:mb-16">
+          <div
+            id={id}
+            className={`max-w-3xl mb-12 md:mb-16 ${
+              id ? "section-anchor" : ""
+            }`}
+          >
             {eyebrow && (
               <Reveal>
                 <div className="flex items-center gap-3 mb-4">
