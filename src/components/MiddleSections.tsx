@@ -207,7 +207,7 @@ export function Programs() {
                     aria-roledescription="slide"
                     aria-label={`${program.title} ${logicalIndex + 1} / ${items.length}`}
                     aria-hidden={isClone || !isVisible}
-                    className={`group flex h-full w-[76vw] max-w-[620px] flex-none flex-col overflow-hidden rounded-lg border border-sand-200 bg-white shadow-md transition-[transform,opacity,box-shadow] duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] sm:w-[min(68vw,520px)] lg:w-[min(48vw,600px)] ${isActive ? "shadow-xl" : ""}`}
+                    className={`group flex h-[calc(100%-20px)] w-[76vw] max-w-[620px] flex-none flex-col overflow-hidden rounded-lg border border-sand-200 bg-white shadow-md transition-[transform,opacity,box-shadow] duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] sm:w-[min(68vw,520px)] lg:w-[min(52vw,660px)] ${isActive ? "shadow-xl" : ""}`}
                     style={{
                       transform: `scale(${isActive ? 1 : distance === 1 ? 0.88 : 0.8})`,
                       opacity: isActive ? 1 : distance === 1 ? 0.62 : 0.28,
@@ -403,7 +403,10 @@ export function Impact() {
   const icons = [Users, Heart, MapPin, Award];
 
   return (
-    <section id="impact" className="relative bg-navy-900 text-white overflow-hidden">
+    <section
+      id="impact"
+      className="section-anchor relative bg-navy-900 text-white overflow-hidden"
+    >
       <div
         className="absolute inset-0 opacity-10"
         style={{
@@ -413,9 +416,11 @@ export function Impact() {
         aria-hidden
       />
 
-      <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12 py-20 md:py-28">
-        <Reveal>
-          <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+      <div className="relative mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12 pt-10 pb-12 md:pt-12 md:pb-16 lg:pt-14 lg:pb-16">
+        <div
+          className="text-center max-w-3xl mx-auto mb-12 md:mb-16"
+        >
+          <Reveal>
             <div className="flex items-center justify-center gap-3 mb-4">
               <span className="h-px w-10 bg-gold-400" />
               <span className="text-[13px] tracking-[0.18em] uppercase text-gold-300 font-semibold">
@@ -426,8 +431,8 @@ export function Impact() {
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight">
               <BiText value={t.impact.title} />
             </h2>
-          </div>
-        </Reveal>
+          </Reveal>
+        </div>
 
         <div className="grid grid-cols-2 gap-3 sm:gap-6 md:gap-8 lg:grid-cols-4">
           {t.impact.items.map((stat, i) => {

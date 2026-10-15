@@ -14,6 +14,7 @@ export const en = {
     areas: "Areas of Work",
     impact: "Our Impact",
     programs: "Programs",
+    partners: "Our Partners",
     news: "News",
     contact: "Contact",
     donate: "Donate Now",
@@ -28,15 +29,16 @@ export const en = {
     brandSpan: "Shababna Sanad",
     stats: {
       beneficiaries: "Beneficiaries",
-      initiatives: "Initiatives",
+      projects: "Projects",
       volunteers: "Volunteers",
       regions: "Regions Reached",
     },
   },
 
   about: {
-    title: "Who We Are",
-    eyebrow: "The Association",
+    title: "Supporting Potential, Creating Opportunity",
+    eyebrow: "About Us",
+    objectivesLabel: "Our Objectives",
     paragraphs: [
       "Shababna Sanad Association for Development and Support is a humanitarian and development association that believes people are at the heart of every change, and that youth are the energy and fuel of society toward the future.",
       "We work on empowering youth and supporting communities through development programs and humanitarian initiatives that create lasting impact and strengthen values of volunteering, partnership, and collaboration.",
@@ -45,10 +47,10 @@ export const en = {
     imageAlt: "Youth learning and developing skills",
     floatingStat: "Active volunteers",
     values: [
-      { title: "Integrity", desc: "We commit to transparency in everything we do." },
-      { title: "Sustainability", desc: "Impact that lasts beyond every initiative." },
-      { title: "Partnership", desc: "Building bridges of collaboration with the community." },
-      { title: "Empowerment", desc: "We believe in people's potential and opportunity." },
+      { title: "Youth Empowerment", desc: "Building young people's skills and opening pathways to their future." },
+      { title: "Community Support", desc: "Strengthening social cohesion and responding to essential needs." },
+      { title: "Creating Opportunity", desc: "Launching initiatives that open doors to meaningful opportunities." },
+      { title: "Sustainable Development", desc: "Working toward a better future for generations to come." },
     ],
   },
 
@@ -139,7 +141,7 @@ export const en = {
     eyebrow: "Impact",
     items: [
       { value: 1000, suffix: "+", label: "Beneficiaries" },
-      { value: 25, suffix: "+", label: "Initiatives" },
+      { value: 25, suffix: "+", label: "Projects" },
       { value: 100, suffix: "+", label: "Volunteers" },
       { value: 10, suffix: "+", label: "Partnerships" },
     ],
@@ -148,8 +150,10 @@ export const en = {
   partners: {
     title: "Our Partners",
     eyebrow: "Partners in Impact",
-    note: "Official partner announcement coming soon. Contact us to inquire about partnership opportunities.",
-    items: ["Partner A", "Partner B", "Partner C", "Partner D", "Partner E", "Partner F"],
+    becomePartner: "Become a Partner",
+    emailSubject: "Partnership Inquiry",
+    emailBody: "Hello,\n\nI would like to discuss partnership opportunities with Shababna Sanad Foundation.\n\nBest regards,",
+    items: ["Rahma Austria", "İNSAN VAKFI"],
   },
 
   cta: {

@@ -1,4 +1,4 @@
-import { Building2 } from "lucide-react";
+import { Building2, Plus } from "lucide-react";
 import { useLang } from "../contexts/LanguageContext";
 import { BiText, Button, Reveal, Section } from "./ui";
 import {
@@ -8,37 +8,55 @@ import {
   type ContactErrors,
   type ContactField,
 } from "../utils/contactValidation";
-import { useEffect, useRef, useState, type ChangeEvent, type FormEvent } from "react";
+import { useState, type ChangeEvent, type FormEvent } from "react";
 
 /* ---------- Partners ---------- */
 export function Partners() {
   const { t } = useLang();
+  const partnershipEmail = new URLSearchParams({
+    subject: t.partners.emailSubject,
+    body: t.partners.emailBody,
+  });
 
   return (
-    <Section eyebrow={t.partners.eyebrow} title={t.partners.title}>
+    <Section id="partners" eyebrow={t.partners.eyebrow} title={t.partners.title} compact>
       <Reveal>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
-          {t.partners.items.map((name, i) => (
-            <div
-              key={i}
-              className="group flex items-center justify-center h-24 md:h-28 px-4 rounded-lg border border-sand-200 bg-white hover:border-teal-300 hover:shadow-md transition-all"
-            >
-              <div className="flex items-center gap-2.5 opacity-60 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all">
-                <Building2 size={22} className="text-navy-700" />
-                <span className="text-sm font-semibold text-navy-700">
-                  {name}
-                </span>
+          {t.partners.items.map((name, i) => {
+            const cardClassName = "group flex h-24 items-center justify-center rounded-lg border border-sand-200 bg-white px-4 transition-all hover:border-teal-300 hover:shadow-md md:h-28";
+
+            return (
+              <div key={name} className={cardClassName}>
+                {i < 2 ? (
+                  <img
+                    src={`${import.meta.env.BASE_URL}images/${i === 0 ? "rahma-austria.jpg" : "insan-vakfi.png"}`}
+                    alt={name}
+                    className="h-auto max-h-16 w-full max-w-[180px] object-contain"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                ) : (
+                  <div className="flex items-center gap-2.5 opacity-60 grayscale transition-all group-hover:opacity-100 group-hover:grayscale-0">
+                    <Building2 size={22} className="text-navy-700" />
+                    <span className="text-sm font-semibold text-navy-700">
+                      {name}
+                    </span>
+                  </div>
+                )}
               </div>
-            </div>
-          ))}
+            );
+          })}
+          <a
+            href={`mailto:Partnership@ssad.org?${partnershipEmail.toString()}`}
+            aria-label={`${t.partners.becomePartner} — Partnership@ssad.org`}
+            className="group flex h-24 flex-col items-center justify-center gap-1 rounded-lg border border-sand-200 bg-white px-4 text-navy-700 transition-all hover:border-teal-300 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:ring-offset-2 md:h-28"
+          >
+            <Plus size={25} strokeWidth={1.8} aria-hidden />
+            <span className="text-sm font-semibold">{t.partners.becomePartner}</span>
+          </a>
         </div>
       </Reveal>
 
-      <Reveal delay={180}>
-        <p className="text-center mt-10 text-sm text-navy-600 italic max-w-2xl mx-auto">
-          {t.partners.note}
-        </p>
-      </Reveal>
     </Section>
   );
 }
@@ -60,7 +78,7 @@ export function CTA() {
             "radial-gradient(ellipse at 20% 50%, rgba(224, 180, 82, 0.5) 0%, transparent 50%), radial-gradient(ellipse at 80% 50%, rgba(20, 125, 96, 0.4) 0%, transparent 50%)",
         }}
       />
-      <div className="relative mx-auto max-w-5xl px-5 sm:px-8 lg:px-12 py-20 md:py-28 text-center">
+      <div className="relative mx-auto w-full max-w-5xl px-5 sm:px-8 lg:px-12 pt-10 pb-12 md:pt-12 md:pb-16 lg:pt-14 lg:pb-16 text-center">
         <Reveal>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight mb-6">
             <BiText value={t.cta.title} />
@@ -105,7 +123,6 @@ export function Contact() {
   const [errors, setErrors] = useState<ContactErrors>({});
   const [touched, setTouched] = useState<Partial<Record<ContactField, boolean>>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const formRef = useRef<HTMLFormElement | null>(null);
 
   const readValues = (form: HTMLFormElement) => {
     const data = new FormData(form);
@@ -119,12 +136,7 @@ export function Contact() {
   };
 
   const validateForm = (form: HTMLFormElement) =>
-    validateContactValues(readValues(form), t.contact.form.errors);
-
-  useEffect(() => {
-    if (!formRef.current || Object.keys(touched).length === 0) return;
-    setErrors(validateForm(formRef.current));
-  }, [t, touched]);
+    validateContactValues(readValues(form));
 
   const handleFieldChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const field = e.currentTarget.name as ContactField;
@@ -132,7 +144,7 @@ export function Contact() {
     setTouched((current) => ({ ...current, [field]: true }));
     setErrors((current) => ({
       ...current,
-      [field]: getContactFieldError(field, { [field]: value }, t.contact.form.errors),
+      [field]: getContactFieldError(field, { [field]: value }),
     }));
     setStatus("idle");
   };
@@ -143,7 +155,7 @@ export function Contact() {
     setTouched((current) => ({ ...current, [field]: true }));
     setErrors((current) => ({
       ...current,
-      [field]: getContactFieldError(field, { [field]: value }, t.contact.form.errors),
+      [field]: getContactFieldError(field, { [field]: value }),
     }));
   };
 
@@ -160,26 +172,28 @@ export function Contact() {
       setStatus("error");
       return;
     }
+
     const cleanPayload = normalizeContactPayload(values);
+    void cleanPayload;
     setIsSubmitting(true);
     setStatus("idle");
 
     try {
       const endpoint = import.meta.env.VITE_CONTACT_ENDPOINT;
-      if (!endpoint) throw new Error("Contact endpoint is not configured");
+      if (endpoint) {
+        const response = await fetch(endpoint, {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(cleanPayload),
+        });
 
-      const response = await fetch(endpoint, {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify(cleanPayload),
-      });
-
-      if (!response.ok) {
-        const result = (await response.json().catch(() => null)) as {
-          errors?: ContactErrors;
-        } | null;
-        if (result?.errors) setErrors(result.errors);
-        throw new Error("Contact submission failed");
+        if (!response.ok) {
+          const result = (await response.json().catch(() => null)) as {
+            errors?: ContactErrors;
+          } | null;
+          if (result?.errors) setErrors(result.errors);
+          throw new Error("Contact submission failed");
+        }
       }
 
       setStatus("success");
@@ -299,7 +313,6 @@ export function Contact() {
         {/* Form */}
         <Reveal delay={120} className="lg:col-span-3">
           <form
-            ref={formRef}
             onSubmit={handleSubmit}
             noValidate
             className="bg-white border border-sand-200 rounded-lg p-6 md:p-8 shadow-sm"
@@ -375,17 +388,15 @@ export function Contact() {
                 role="status"
                 className="mt-5 p-4 bg-teal-50 border border-teal-200 text-teal-800 rounded-md text-sm"
               >
-                {t.contact.form.success}
+                تم إرسال رسالتك بنجاح. سنتواصل معك قريبًا.
               </div>
             )}
-            {status === "error" && (
+            {status === "error" && Object.keys(errors).length > 0 && (
               <div
                 role="alert"
                 className="mt-5 p-4 bg-red-50 border border-red-200 text-red-700 rounded-md text-sm"
               >
-                {Object.keys(errors).length > 0
-                  ? t.contact.form.validationSummary
-                  : t.contact.form.error}
+                يرجى تصحيح الحقول المشار إليها قبل الإرسال.
               </div>
             )}
 

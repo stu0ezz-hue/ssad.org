@@ -14,6 +14,7 @@ export const tr = {
     areas: "Çalışma Alanlarımız",
     impact: "Etkimiz",
     programs: "Programlarımız",
+    partners: "Ortaklarımız",
     news: "Haberler",
     contact: "İletişim",
     donate: "Bağış Yap",
@@ -28,15 +29,16 @@ export const tr = {
     brandSpan: "Shababna Sanad",
     stats: {
       beneficiaries: "Yararlanıcı",
-      initiatives: "Girişim",
+      projects: "Proje",
       volunteers: "Gönüllü",
       regions: "Ulaşılan Bölge",
     },
   },
 
   about: {
-    title: "Biz Kimiz",
-    eyebrow: "Dernek",
+    title: "Potansiyeli Destekliyor, Fırsatlar Yaratıyoruz",
+    eyebrow: "Hakkımızda",
+    objectivesLabel: "Hedeflerimiz",
     paragraphs: [
       "Shababna Sanad Kalkınma ve Destek Derneği, insanı her değişimin merkezine koyan, gençleri toplumun enerjisi ve geleceğin yakıtı olarak gören insani ve kalkınma odaklı bir dernektir.",
       "Gençleri güçlendirmek ve topluluğu desteklemek için kalıcı etki yaratan kalkınma programları ve insani girişimler yürütüyor; gönüllülük, ortaklık ve iş birliği değerlerini güçlendiriyoruz.",
@@ -45,10 +47,10 @@ export const tr = {
     imageAlt: "Becerilerini geliştiren gençler",
     floatingStat: "Aktif Gönüllüler",
     values: [
-      { title: "Dürüstlük", desc: "Yaptığımız her işte şeffaflığa bağlıyız." },
-      { title: "Sürdürülebilirlik", desc: "Etkisi her girişimin ötesinde süren çalışmalar." },
-      { title: "Ortaklık", desc: "Toplumla iş birliği köprüleri kuruyoruz." },
-      { title: "Güçlendirme", desc: "İnsanların potansiyeline ve fırsatlarına inanıyoruz." },
+      { title: "Gençleri Güçlendirme", desc: "Gençlerin becerilerini geliştirmek ve geleceklerine kapı açmak." },
+      { title: "Toplumu Destekleme", desc: "Toplumsal dayanışmayı güçlendirmek ve temel ihtiyaçlara yanıt vermek." },
+      { title: "Fırsat Yaratma", desc: "Gerçek fırsatların önünü açan girişimler başlatmak." },
+      { title: "Sürdürülebilir Kalkınma", desc: "Gelecek nesiller için daha iyi bir gelecek oluşturmak." },
     ],
   },
 
@@ -139,7 +141,7 @@ export const tr = {
     eyebrow: "Etki",
     items: [
       { value: 1000, suffix: "+", label: "Yararlanıcı" },
-      { value: 25, suffix: "+", label: "Girişim" },
+      { value: 25, suffix: "+", label: "Proje" },
       { value: 100, suffix: "+", label: "Gönüllü" },
       { value: 10, suffix: "+", label: "Ortaklık" },
     ],
@@ -148,8 +150,10 @@ export const tr = {
   partners: {
     title: "İş Ortaklarımız",
     eyebrow: "Etkide Ortaklarımız",
-    note: "İş ortaklarının resmi duyurusu yakında yapılacaktır. Ortaklık fırsatları hakkında bilgi almak için bizimle iletişime geçin.",
-    items: ["Partner A", "Partner B", "Partner C", "Partner D", "Partner E", "Partner F"],
+    becomePartner: "Ortağımız Olun",
+    emailSubject: "İş Birliği Talebi",
+    emailBody: "Merhaba,\n\nShababna Sanad Vakfı ile iş birliği fırsatlarını görüşmek istiyorum.\n\nSaygılarımla,",
+    items: ["Rahma Austria", "İNSAN VAKFI"],
   },
 
   cta: {

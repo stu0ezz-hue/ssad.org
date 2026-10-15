@@ -1,108 +1,75 @@
-import { CheckCircle2, ArrowRight } from "lucide-react";
+import { ArrowRight, GraduationCap, HandHeart, Sprout, UsersRound } from "lucide-react";
 import { useLang } from "../contexts/LanguageContext";
-import { BiText, Reveal, Section } from "./ui";
+import { BiText, Reveal } from "./ui";
 import * as Icons from "lucide-react";
 
 export function About() {
   const { t, dir } = useLang();
   const ArrowIcon = dir === "rtl" ? Icons.ArrowLeft : ArrowRight;
+  const objectiveIcons = [GraduationCap, UsersRound, Sprout, HandHeart];
 
   return (
-    <Section id="about" eyebrow={t.about.eyebrow} title={t.about.title}>
-      <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        {/* Image */}
-        <Reveal>
-          <div className="relative">
-            <div className="relative overflow-hidden rounded-lg shadow-2xl">
-              <img
-                src={`${import.meta.env.BASE_URL}images/about.jpg`}
-                alt={t.about.imageAlt}
-                className="w-full h-[400px] md:h-[500px] object-cover"
-                loading="lazy"
-                decoding="async"
-              />
-              <div
-                className="absolute inset-0 bg-gradient-to-tr from-navy-900/30 to-transparent"
-                aria-hidden
-              />
+    <section id="about" className="section-anchor relative flex min-h-svh items-center bg-white">
+      <div className="mx-auto grid max-w-7xl items-center gap-8 px-5 py-9 sm:px-8 sm:py-12 lg:grid-cols-[0.85fr_1.55fr] lg:gap-14 lg:px-12 lg:py-9">
+        <Reveal className="order-2 lg:order-2">
+          <div className="rounded-lg border border-navy-50 bg-navy-50/80 p-5 sm:p-7 lg:p-8">
+            <div className="mb-5 flex items-center gap-3 text-sm font-semibold text-sky-700">
+              <span className="h-px w-8 bg-sky-600" aria-hidden />
+              <BiText value={t.about.objectivesLabel} />
             </div>
-            {/* Decorative accent */}
-            <div
-              className="absolute -bottom-6 -right-6 w-32 h-32 bg-gold-400/20 rounded-lg -z-10"
-              aria-hidden
-            />
-            <div
-              className="absolute -top-6 -left-6 w-24 h-24 bg-teal-500/20 rounded-full -z-10"
-              aria-hidden
-            />
-            {/* Floating card */}
-            <div className="absolute -bottom-8 start-6 md:start-10 bg-white shadow-xl rounded-lg p-5 border border-sand-200 max-w-[220px]">
-              <div className="text-3xl font-bold text-navy-900 mb-1 tabular-nums">
-                +100
-              </div>
-              <div className="text-sm text-navy-600 font-medium">
-                {t.about.floatingStat}
-              </div>
-              <div className="mt-3 h-1 w-full bg-sand-100 rounded-full overflow-hidden">
-                <div className="h-full w-3/4 bg-gradient-to-r from-teal-500 to-gold-400 rounded-full" />
-              </div>
+            <div className="grid grid-cols-2 gap-x-3 gap-y-6 sm:gap-x-5 lg:grid-cols-4 lg:gap-x-4">
+              {t.about.values.map((objective, i) => {
+                const Icon = objectiveIcons[i];
+                return (
+                  <div key={objective.title} className="text-center">
+                    <div
+                        className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-md border border-navy-100 bg-white text-navy-700 sm:h-14 sm:w-14"
+                    >
+                      <Icon size={25} strokeWidth={1.8} aria-hidden />
+                    </div>
+                    <h3 className="mb-1.5 text-sm font-bold text-navy-800 sm:text-base">
+                      <BiText value={objective.title} />
+                    </h3>
+                    <p className="text-xs leading-6 text-slate-600 sm:text-sm">
+                      <BiText value={objective.desc} />
+                    </p>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </Reveal>
 
-        {/* Text */}
-        <div>
+        <div className="order-1 text-start lg:order-1">
           <Reveal>
-            {t.about.paragraphs.map((p, i) => (
-              <p
-                key={i}
-                className="text-navy-700 text-base md:text-lg leading-relaxed mb-5"
-              >
-                <BiText value={p} />
-              </p>
-            ))}
+            <div className="mb-3 flex items-center gap-3 text-sm font-semibold text-sky-700">
+              <BiText value={t.about.eyebrow} />
+              <span className="h-px w-8 bg-sky-600" aria-hidden />
+            </div>
+            <h2 className="mb-4 text-2xl font-bold leading-tight text-navy-800 sm:text-3xl lg:text-4xl">
+              <BiText value={t.about.title} as="span" />
+            </h2>
+            <p className="max-w-xl text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">
+              {t.about.paragraphs[1]}
+            </p>
           </Reveal>
 
           <Reveal delay={120}>
-            <div className="grid sm:grid-cols-2 gap-4 mt-8">
-              {t.about.values.map((v, i) => (
-                <div
-                  key={i}
-                  className="flex items-start gap-3 p-4 rounded-lg bg-sand-50 border border-sand-100 hover:border-teal-200 hover:bg-teal-50/40 transition-colors"
-                >
-                  <CheckCircle2
-                    size={20}
-                    className="text-teal-600 mt-0.5 shrink-0"
-                    aria-hidden
-                  />
-                  <div>
-                    <div className="font-semibold text-navy-900 mb-1">
-                      <BiText value={v.title} />
-                    </div>
-                    <div className="text-sm text-navy-600 leading-relaxed">
-                      <BiText value={v.desc} />
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Reveal>
-
-          <Reveal delay={240}>
             <a
               href="#mission"
-              className="group inline-flex items-center gap-2 mt-8 text-navy-900 font-semibold hover:text-teal-600 transition-colors"
+              className="group mt-6 inline-flex min-h-11 items-center gap-3 rounded-md border border-navy-500 px-5 py-2.5 text-sm font-semibold text-navy-800 transition-colors hover:bg-navy-50"
             >
               {t.about.cta}
               <ArrowIcon
-                size={18}
-                className="transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1 rtl:rotate-180"
+                size={17}
+                className="transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1"
+                aria-hidden
               />
             </a>
           </Reveal>
         </div>
       </div>
-    </Section>
+    </section>
   );
 }
 
@@ -111,7 +78,7 @@ export function MissionVision() {
   const { t } = useLang();
 
   return (
-    <section id="mission" className="relative bg-navy-900 text-white overflow-hidden">
+    <section id="mission" className="relative flex min-h-svh items-center bg-navy-900 text-white overflow-hidden">
       {/* Subtle background pattern */}
       <div
         className="absolute inset-0 opacity-[0.04]"
@@ -122,7 +89,7 @@ export function MissionVision() {
         aria-hidden
       />
 
-      <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12 py-20 md:py-28">
+      <div className="relative mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12 py-20 md:py-28">
         {/* Mission */}
         <Reveal>
           <div className="max-w-5xl">
@@ -159,52 +126,5 @@ export function MissionVision() {
         </Reveal>
       </div>
     </section>
-  );
-}
-
-/* ---------- Areas of Work ---------- */
-export function AreasOfWork() {
-  const { t } = useLang();
-
-  return (
-    <Section
-      id="areas"
-      subtle
-      eyebrow={t.areas.eyebrow}
-      title={t.areas.title}
-    >
-      <div className="grid grid-cols-2 gap-3 sm:gap-5 md:gap-6 lg:grid-cols-3">
-        {t.areas.items.map((area, i) => {
-          const Icon = (Icons as unknown as Record<string, Icons.LucideIcon>)[
-            area.icon
-          ] as Icons.LucideIcon | undefined;
-          return (
-            <Reveal key={area.key} delay={i * 80}>
-              <article className="group h-full bg-white border border-sand-200 rounded-lg p-4 sm:p-7 md:p-8 hover:border-teal-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-5">
-                  <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-navy-800 text-gold-300 group-hover:bg-teal-600 group-hover:text-white transition-colors">
-                    {Icon ? <Icon size={24} strokeWidth={1.8} /> : null}
-                  </div>
-                  <div className="h-px flex-1 bg-sand-200 group-hover:bg-teal-200 transition-colors" />
-                </div>
-                <h3 className="text-lg sm:text-xl font-bold text-navy-900 mb-2 sm:mb-3 leading-snug">
-                  <BiText value={area.title} />
-                </h3>
-                <p className="text-sm sm:text-[15px] text-navy-600 leading-relaxed">
-                  <BiText value={area.desc} />
-                </p>
-                <div
-                  className="mt-6 flex items-center gap-2 text-sm font-semibold text-teal-600 opacity-0 group-hover:opacity-100 transition-opacity"
-                  aria-hidden
-                >
-                  <span className="h-px w-6 bg-teal-600" />
-                  <span>{t.about.cta}</span>
-                </div>
-              </article>
-            </Reveal>
-          );
-        })}
-      </div>
-    </Section>
   );
 }

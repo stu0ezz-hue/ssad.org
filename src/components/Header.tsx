@@ -1,4 +1,11 @@
-import { Fragment, useEffect, useLayoutEffect, useRef, useState } from "react";
+import {
+  Fragment,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  type MouseEvent as ReactMouseEvent,
+} from "react";
 import { Menu, X } from "lucide-react";
 import { useLang } from "../contexts/LanguageContext";
 import { LANGS, LANG_INFO } from "../data/i18n";
@@ -6,11 +13,13 @@ import { Wordmark } from "./ui";
 
 export function Header() {
   const { t, lang, setLang, dir } = useLang();
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(
+    () => typeof window !== "undefined" && window.scrollY > 16,
+  );
   const [activeHref, setActiveHref] = useState(() => {
     const hash = typeof window !== "undefined" ? window.location.hash : "";
-    return ["#home", "#about", "#areas", "#programs", "#impact", "#contact"].includes(hash)
+    return ["#home", "#about", "#programs", "#partners", "#impact", "#contact"].includes(hash)
       ? hash
       : "#home";
   });
@@ -19,17 +28,27 @@ export function Header() {
   const desktopNavRef = useRef<HTMLElement | null>(null);
   const desktopLinkRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
   const pendingHrefRef = useRef<string | null>(null);
+  const pendingNavigationRef = useRef<string | null>(null);
+
+  const navigateToHash = (href: string) => {
+    const target = document.getElementById(href.slice(1));
+    if (!target) return;
+
+    if (window.location.hash !== href) {
+      window.history.pushState(null, "", href);
+    }
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const updateScrolledState = () => setIsScrolled(window.scrollY > 16);
+    window.addEventListener("scroll", updateScrolledState, { passive: true });
+    return () => window.removeEventListener("scroll", updateScrolledState);
   }, []);
 
   // Resolve one active section per animation frame to avoid observer churn during smooth scroll.
   useEffect(() => {
-    const sectionIds = ["home", "about", "areas", "programs", "impact", "contact"];
+    const sectionIds = ["home", "about", "programs", "partners", "impact", "contact"];
     const sections = sectionIds.map((id) => document.getElementById(id));
     if (!sections.length) return;
 
@@ -117,7 +136,7 @@ export function Header() {
       window.removeEventListener("resize", updateIndicator);
       window.cancelAnimationFrame(frame);
     };
-  }, [activeHref, dir, lang, scrolled]);
+  }, [activeHref, dir, lang]);
 
   // Close mobile menu on resize to desktop
   useEffect(() => {
@@ -128,9 +147,14 @@ export function Header() {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
-  // Lock body scroll when mobile menu is open
+  // Unlock before applying a mobile menu link's hash navigation.
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
+    if (!mobileOpen && pendingNavigationRef.current) {
+      const href = pendingNavigationRef.current;
+      pendingNavigationRef.current = null;
+      navigateToHash(href);
+    }
     return () => {
       document.body.style.overflow = "";
     };
@@ -139,51 +163,60 @@ export function Header() {
   const links: { href: string; label: string }[] = [
     { href: "#home", label: t.nav.home },
     { href: "#about", label: t.nav.about },
-    { href: "#areas", label: t.nav.areas },
     { href: "#programs", label: t.nav.programs },
+    { href: "#partners", label: t.nav.partners },
     { href: "#impact", label: t.nav.impact },
     { href: "#contact", label: t.nav.contact },
   ];
 
-  const onNavClick = (href?: string) => {
+  const onNavClick = (
+    event: ReactMouseEvent<HTMLAnchorElement>,
+    href?: string,
+  ) => {
+    event.preventDefault();
     if (href) {
-      pendingHrefRef.current = href;
-      activeHrefRef.current = href;
-      setActiveHref(href);
+      if (links.some((link) => link.href === href)) {
+        pendingHrefRef.current = href;
+        activeHrefRef.current = href;
+        setActiveHref(href);
+      }
+      if (mobileOpen) {
+        pendingNavigationRef.current = href;
+      } else {
+        navigateToHash(href);
+      }
     }
     setMobileOpen(false);
   };
 
-  const headerBg = scrolled
-    ? "bg-white/95 backdrop-blur-md border-b border-sand-200 shadow-sm"
-    : "bg-transparent";
-  const headerText = scrolled ? "text-navy-900" : "text-white";
+  const useLightHeader = isScrolled || mobileOpen;
+  const headerText = useLightHeader ? "text-navy-900" : "text-white";
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${headerBg}`}
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-300 ${
+        useLightHeader
+          ? "border-sand-200 bg-white/95 shadow-sm backdrop-blur-md"
+          : "border-transparent bg-transparent"
+      }`}
       role="banner"
       dir={dir}
     >
-      <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
-        <div className="flex h-14 sm:h-20 items-center justify-between gap-3 sm:gap-4">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
+        <div className="flex h-14 items-center justify-between gap-4 sm:h-16">
           {/* Logo */}
           <a
             href="#home"
-            className="order-1 flex items-center shrink-0 ml-2 sm:ml-3"
+            className="order-1 flex items-center shrink-0"
             aria-label={t.a11y.logo}
           >
-            {scrolled ? (
-              <Wordmark light={false} />
-            ) : (
-              <Wordmark light={true} />
-            )}
+            <Wordmark light={!useLightHeader} />
           </a>
 
           {/* Desktop Nav */}
           <nav
             ref={desktopNavRef}
-            className="relative hidden lg:flex items-center gap-1 order-2"
+            className="relative hidden lg:flex items-center gap-0.5 order-2 xl:gap-2"
             aria-label={t.a11y.mainNav}
           >
             {links.map((link) => (
@@ -193,10 +226,12 @@ export function Header() {
                 ref={(element) => {
                   desktopLinkRefs.current[link.href] = element;
                 }}
-                onClick={() => onNavClick(link.href)}
+                onClick={(event) => onNavClick(event, link.href)}
                 aria-current={activeHref === link.href ? "page" : undefined}
-                className={`px-4 py-2 text-[14.5px] font-medium rounded-md transition-colors hover:bg-white/10 ${
-                  scrolled ? "hover:bg-navy-50 hover:text-navy-900" : ""
+                className={`whitespace-nowrap px-2.5 py-2 text-[13.5px] font-medium rounded-md transition-colors xl:px-4 xl:text-[14.5px] ${
+                  useLightHeader
+                    ? "hover:bg-navy-50 hover:text-navy-900"
+                    : "hover:bg-white/10 hover:text-white"
                 } ${headerText}`}
               >
                 {link.label}
@@ -214,14 +249,15 @@ export function Header() {
             />
           </nav>
         {/* Right side */}
-          <div className="order-3 flex items-center gap-2 sm:gap-3">
+          <div className="order-3 flex items-center gap-3">
             {/* Language Switcher */}
             <div
               className={`hidden sm:flex items-center text-xs font-semibold rounded-md border ${
-                scrolled
+                useLightHeader
                   ? "border-navy-200 text-navy-700"
-                  : "border-white/30 text-white"
+                  : "border-white/35 text-white"
               }`}
+              dir="ltr"
               role="group"
               aria-label={t.a11y.languageGroup}
             >
@@ -232,10 +268,12 @@ export function Header() {
                     onClick={() => setLang(code)}
                     className={`px-3 py-1.5 transition-colors ${
                       lang === code
-                        ? scrolled
+                        ? useLightHeader
                           ? "bg-navy-800 text-white"
-                          : "bg-white/15 text-white"
-                        : "hover:bg-white/10"
+                          : "bg-white/20 text-white"
+                        : useLightHeader
+                          ? "hover:bg-navy-50"
+                          : "hover:bg-white/10"
                     } ${i === 0 ? "rounded-s-md" : ""} ${
                       i === LANGS.length - 1 ? "rounded-e-md" : ""
                     }`}
@@ -246,7 +284,7 @@ export function Header() {
                   {i < LANGS.length - 1 && (
                     <span
                       className={`w-px self-stretch ${
-                        scrolled ? "bg-navy-200" : "bg-white/30"
+                        useLightHeader ? "bg-navy-200" : "bg-white/30"
                       }`}
                       aria-hidden
                     />
@@ -258,7 +296,7 @@ export function Header() {
             {/* Donate CTA */}
             <a
               href="#cta"
-              className="hidden sm:inline-flex shrink-0 items-center gap-2 whitespace-nowrap bg-gold-400 hover:bg-gold-300 text-navy-900 font-semibold text-[14px] px-5 py-2.5 rounded-md transition-all shadow-sm hover:shadow-md"
+              className="hidden sm:inline-flex shrink-0 min-h-10 items-center gap-2 whitespace-nowrap bg-gold-400 hover:bg-gold-300 text-navy-900 font-semibold text-[13px] px-4 py-2 rounded-md transition-all shadow-sm hover:shadow-md xl:text-[14px] xl:px-5"
             >
               <img
                 src={`${import.meta.env.BASE_URL}images/donate.png`}
@@ -274,7 +312,7 @@ export function Header() {
               type="button"
               onClick={() => setMobileOpen((v) => !v)}
               className={`lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-md transition-colors ${
-                scrolled
+                useLightHeader
                   ? "text-navy-900 hover:bg-navy-50"
                   : "text-white hover:bg-white/10"
               }`}
@@ -299,14 +337,14 @@ export function Header() {
               <a
                 key={link.href}
                 href={link.href}
-                onClick={() => onNavClick(link.href)}
+                onClick={(event) => onNavClick(event, link.href)}
                 className="block px-3 py-3 text-[15px] font-medium text-navy-800 rounded-md hover:bg-sand-50"
               >
                 {link.label}
               </a>
             ))}
             <div className="pt-3 mt-2 border-t border-sand-200 flex items-center justify-between gap-3">
-              <div className="flex items-center text-xs font-semibold rounded-md border border-navy-200 text-navy-700">
+              <div className="flex items-center text-xs font-semibold rounded-md border border-navy-200 text-navy-700" dir="ltr">
                 {LANGS.map((code, i) => (
                   <button
                     key={code}
@@ -324,7 +362,7 @@ export function Header() {
               </div>
               <a
                 href="#cta"
-                onClick={() => onNavClick()}
+                onClick={(event) => onNavClick(event, "#cta")}
                 className="inline-flex shrink-0 items-center gap-2 whitespace-nowrap bg-gold-400 hover:bg-gold-300 text-navy-900 font-semibold text-sm px-5 py-2.5 rounded-md"
               >
                 <img
