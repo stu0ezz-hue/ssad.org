@@ -153,7 +153,7 @@ export const ar = {
     becomePartner: "كن شريكًا",
     emailSubject: "طلب شراكة",
     emailBody: "السلام عليكم،\n\nأرغب في التواصل لمناقشة فرص الشراكة مع مؤسسة شبابنا سند.\n\nمع التحية،",
-    items: ["Rahma Austria", "İNSAN VAKFI", "ROUH"],
+    items: ["Rahma Austria", "İNSAN VAKFI", "ROUH", "Human Help Austria"],
   },
 
   cta: {

@@ -24,7 +24,7 @@ export function Partners() {
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
           {t.partners.items.map((name, i) => {
             const cardClassName = "group flex h-24 items-center justify-center rounded-lg border border-sand-200 bg-white px-4 transition-all hover:border-teal-300 hover:shadow-md md:h-28";
-            const logoFiles = ["rahma-austria.jpg", "insan-vakfi.png", "rouh.webp"];
+            const logoFiles = ["rahma-austria.jpg", "insan-vakfi.png", "rouh.webp", "humanhelp-austria.jpg"];
 
             return (
               <div key={name} className={cardClassName}>
