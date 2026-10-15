@@ -153,7 +153,7 @@ export const en = {
     becomePartner: "Become a Partner",
     emailSubject: "Partnership Inquiry",
     emailBody: "Hello,\n\nI would like to discuss partnership opportunities with Shababna Sanad Foundation.\n\nBest regards,",
-    items: ["Rahma Austria", "İNSAN VAKFI", "ROUH", "Human Help Austria"],
+    items: ["Rahma Austria", "İNSAN VAKFI", "ROUH", "Human Help Austria", "Abu Faissal Group"],
   },
 
   cta: {

@@ -153,7 +153,7 @@ export const tr = {
     becomePartner: "Ortağımız Olun",
     emailSubject: "İş Birliği Talebi",
     emailBody: "Merhaba,\n\nShababna Sanad Vakfı ile iş birliği fırsatlarını görüşmek istiyorum.\n\nSaygılarımla,",
-    items: ["Rahma Austria", "İNSAN VAKFI", "ROUH", "Human Help Austria"],
+    items: ["Rahma Austria", "İNSAN VAKFI", "ROUH", "Human Help Austria", "Abu Faissal Group"],
   },
 
   cta: {
